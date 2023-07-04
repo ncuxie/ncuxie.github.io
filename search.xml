@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>饥荒服务器的搭建及自动化更新的shell脚本</title>
+      <link href="/2023/07/03/%E9%A5%A5%E8%8D%92%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E6%90%AD%E5%BB%BA%E5%8F%8A%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9B%B4%E6%96%B0%E7%9A%84shell%E8%84%9A%E6%9C%AC/"/>
+      <url>/2023/07/03/%E9%A5%A5%E8%8D%92%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E6%90%AD%E5%BB%BA%E5%8F%8A%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9B%B4%E6%96%B0%E7%9A%84shell%E8%84%9A%E6%9C%AC/</url>
+      
+        <content type="html"><![CDATA[<p>饥荒（dst）联机，尤其是 steam 饥荒联机的时候，除了房主，其他人往往是黄色，红色信号，延迟拉满，不时掉线，丢包严重（甚至无师自通地学会了瞬移），可谓是饱受摧残，痛不欲生。</p><p>残忍的现状将房主与他的小伙伴们分隔开，一层可悲的厚障壁悄无声息地出现。然而，自幼聪敏的房主怎会坐以待毙？！<del>\ 是时候展示真正的技术啦！！！</del></p><p>建立一个优质的饥荒联机服务器，拯救房主的小伙伴们于水深火热之中，已经迫在眉睫。</p><!-- toc --><h3 id="环境依赖"><a href="#环境依赖" class="headerlink" title="环境依赖"></a>环境依赖</h3><p>CentOS 7.*</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install glibc.i686 libstdc++.i686 libcurl4-gnutls-dev.i686 libcurl.i686</span><br></pre></td></tr></table></figure><p>Ubuntu <em>.</em></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libstdc++6:i386 libgcc1:i386 libcurl4-gnutls-dev:i386 lib32gcc1</span><br></pre></td></tr></table></figure><h3 id="创建-steam-用户"><a href="#创建-steam-用户" class="headerlink" title="创建 steam 用户"></a>创建 steam 用户</h3><p>创建 steam 用户, -d 将 &#x2F;home&#x2F;steam 目录分配给用户 steam</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd -d /home/steam steam</span><br></pre></td></tr></table></figure><p>修改 steam 用户密码</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd steam</span><br></pre></td></tr></table></figure><p>切换至 steam 用户</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su steam</span><br></pre></td></tr></table></figure><p><del>删除 steam 用户, -r 并将所属目录删除</del></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userdel -r steam <span class="comment"># 有问题才需要删除！</span></span><br></pre></td></tr></table></figure><h3 id="安装-steamcmd"><a href="#安装-steamcmd" class="headerlink" title="安装 steamcmd"></a>安装 steamcmd</h3><p>创建 ~&#x2F;steamcmd 目录用于安装, ~ 是 steam 用户的所属目录,即 &#x2F;home&#x2F;steam</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/steamcmd</span><br></pre></td></tr></table></figure><p>下载 steamcmd 安装文件</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -P ~/steamcmd https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz</span><br></pre></td></tr></table></figure><p>解压压缩包</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvzf steamcmd_linux.tar.gz</span><br></pre></td></tr></table></figure><h3 id="下载饥荒"><a href="#下载饥荒" class="headerlink" title="下载饥荒"></a>下载饥荒</h3><p>启动 SteamCMD</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./steamcmd.sh</span><br></pre></td></tr></table></figure><p>指定下载目录</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">force_install_dir /home/steam/common/dstserver</span><br></pre></td></tr></table></figure><p>匿名登录（首次登陆可能会 retry 几次，可以重启 steamcmd 再试）</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">login anonymous</span><br></pre></td></tr></table></figure><p>下载饥荒</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app_update 343050 validate</span><br></pre></td></tr></table></figure><h3 id="解决依赖缺失"><a href="#解决依赖缺失" class="headerlink" title="解决依赖缺失"></a>解决依赖缺失</h3><p>启动服务器会显示缺少关键的组件 libcurl-gnutls.so.4</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/lib/libcurl.so.4 /home/steam/common/dstserver/bin/lib32/libcurl-gnutls.so.4</span><br></pre></td></tr></table></figure><h3 id="验证并生成相关文件"><a href="#验证并生成相关文件" class="headerlink" title="验证并生成相关文件"></a>验证并生成相关文件</h3><p>到此为止已经可以尝试启动饥荒了<del>（启动但不完全启动）</del><br>在 &#x2F;home&#x2F;steam&#x2F;common&#x2F;dstserver&#x2F;bin&#x2F; 目录下运行如下命令</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./dontstarve_dedicated_server_nullrenderer console_enabled -persistent_storage_root /home/steam/common/dstserver/dst_save -conf_dir dst -cluster Cluster_1 -shard Master</span><br></pre></td></tr></table></figure><p>意思是，启用控制台，保存在 dst_save 里，设置文件在 dst 里，用 Cluster_1 的存档 的地表</p><h3 id="上传存档-amp-cluster-token-txt"><a href="#上传存档-amp-cluster-token-txt" class="headerlink" title="上传存档 &amp; cluster_token.txt"></a>上传存档 &amp; cluster_token.txt</h3><p>将存档（Cluster_1） 上传到 dst_save 里<br>cluster_token.txt 是 klei 的服务器 token，放在 Cluster_1 目录下即可</p><h3 id="编写-自动更新-shell-脚本"><a href="#编写-自动更新-shell-脚本" class="headerlink" title="编写 自动更新 shell 脚本"></a>编写 自动更新 shell 脚本</h3><p><em><strong>脚本内容在文章末尾</strong></em><br>在 &#x2F;home&#x2F;steam&#x2F;common&#x2F;dstsever&#x2F;bin&#x2F; 目录下<br>把 stop update start 内容全部复制进去（记得检查一下）</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim auto_update.sh</span><br></pre></td></tr></table></figure><p>赋予脚本执行权限</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 744 auto_update.sh</span><br></pre></td></tr></table></figure><h3 id="设置-crontab-定时任务"><a href="#设置-crontab-定时任务" class="headerlink" title="设置 crontab 定时任务"></a>设置 crontab 定时任务</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br></pre></td></tr></table></figure><p>写入如下内容：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 4 * * *  /home/steam/common/dstserver/bin/auto_update.sh</span><br></pre></td></tr></table></figure><p>每天第 0 秒,第 4 小时启动一次自动更新脚本</p><hr><h3 id="饥荒自动更新-shell-脚本"><a href="#饥荒自动更新-shell-脚本" class="headerlink" title="饥荒自动更新 shell 脚本"></a>饥荒自动更新 shell 脚本</h3><p>放在与 dontstarve_dedicated_server_nullrenderer 同一个目录下<br>即 &#x2F;home&#x2F;steam&#x2F;common&#x2F;dstserver&#x2F;bin&#x2F; 目录下</p><figure class="highlight shell"><figcaption><span>stop</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pids=$(pgrep -f dontstarve)</span><br><span class="line">if [[ $pids != &quot;&quot; ]]</span><br><span class="line">then</span><br><span class="line">        for pid in $pids</span><br><span class="line">        do</span><br><span class="line">                kill -9 $pid</span><br><span class="line">        done</span><br><span class="line">fi</span><br><span class="line">sleep 10</span><br></pre></td></tr></table></figure><p>pgrep -f dontstarve 查找有 “dontstarve” 的进程号<br>变量 pids 不为空则 kill 掉所有相关进程<br>随后 sleep 10 秒 等待进程彻底结束</p><figure class="highlight shell"><figcaption><span>update</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">~/steamcmd/steamcmd.sh \</span><br><span class="line">+force_install_dir /home/steam/common/dstserver \</span><br><span class="line">+login anonymous \</span><br><span class="line">+app_update 343050 validate \</span><br><span class="line">+quit</span><br></pre></td></tr></table></figure><p>运行 steamcmd.sh<br>随后执行下列命令：</p><ul><li>force_install_dir &#x2F;home&#x2F;steam&#x2F;common&#x2F;dstserver</li><li>login anonymous</li><li>app_update 343050 validate</li><li>quit</li></ul><p>分别对应：</p><ul><li>指定安装目录</li><li>匿名登录</li><li>更新饥荒</li><li>退出 steamcmd</li></ul><figure class="highlight shell"><figcaption><span>start</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nohup ./dontstarve_dedicated_server_nullrenderer console_enabled -persistent_storage_root /home/steam/common/dstserver/dst_save -conf_dir dst -cluster Cluster_1 -shard Master &gt;/dev/null 2&gt;&amp;1 &amp;</span><br><span class="line">nohup ./dontstarve_dedicated_server_nullrenderer console_enabled -persistent_storage_root /home/steam/common/dstserver/dst_save -conf_dir dst -cluster Cluster_1 -shard Caves &gt;/dev/null 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure><p>在后台启动饥荒地表，洞穴服务器</p><h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><p>[1] <a href="https://zhuanlan.zhihu.com/p/146379848">https://zhuanlan.zhihu.com/p/146379848</a><br>[2] <a href="https://github.com/cuukenn/dontstarveserver">https://github.com/cuukenn/dontstarveserver</a><br>[3] <a href="https://forums.kleientertainment.com/forums/topic/59204-server-stopped-working-caves-beta/">Error, failed to change working directory to ..&#x2F;data</a></p><hr><blockquote><p>下次再遇到喜欢的人，千万要记得只做朋友，<br>不远不近的欣赏，淡淡的喜欢，<br>不至于到了最后，<br>乱了初心，败了芳华。</p><footer><strong>End </strong><cite>—— for my love</cite></footer></blockquote><script type="text/javascript" src="/js/no_select.js"></script>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> dst </tag>
+            
+            <tag> shell </tag>
+            
+            <tag> 饥荒 </tag>
+            
+            <tag> 联机 </tag>
+            
+            <tag> 服务器 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>常用的 vim 操作</title>
+      <link href="/2023/07/01/%E5%B8%B8%E7%94%A8%E7%9A%84-vim-%E6%93%8D%E4%BD%9C/"/>
+      <url>/2023/07/01/%E5%B8%B8%E7%94%A8%E7%9A%84-vim-%E6%93%8D%E4%BD%9C/</url>
+      
+        <content type="html"><![CDATA[<p>已经时不时地，或多或少地用过 vim 了，但是对于 vim 的了解还相当浅薄，而且还经常忘记 vim 的常用命令，因此，在这里做一些记录。</p><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote><p>好记性不如烂笔头</p></blockquote><h3 id="复制粘贴"><a href="#复制粘贴" class="headerlink" title="复制粘贴"></a>复制粘贴</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">复制 y</span><br><span class="line">粘贴 p</span><br></pre></td></tr></table></figure><h3 id="撤回"><a href="#撤回" class="headerlink" title="撤回"></a>撤回</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">u</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> vim </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hexo g -d, Github Pages custom domain 404</title>
+      <link href="/2023/07/01/Hexo-g-d-Github-Pages-custom-domain-404/"/>
+      <url>/2023/07/01/Hexo-g-d-Github-Pages-custom-domain-404/</url>
+      
+        <content type="html"><![CDATA[<p>设置 Github Pages 的 custom domain 后，使用 hexo g -d 上传更新，结果发现 404 了。<br>原因其实很简单，设置 custom domain 后，github 会在目录下生成一个 CNAME 文件，而本地没有这个文件，hexo g -d 更新后，CNAME 文件也就没了，于是 404。</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><blockquote><p>复制一个CNAME文件放在本地</p></blockquote><h3 id="胡言乱语"><a href="#胡言乱语" class="headerlink" title="胡言乱语"></a>胡言乱语</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">markdown 插入图片</span><br><span class="line">![](<span class="link">/2023/07/01/1688197856105.jpg &quot;有事吗？&quot;</span>)</span><br></pre></td></tr></table></figure><h3 id="End"><a href="#End" class="headerlink" title="End"></a>End</h3><blockquote><p><del>今天又是美好的一天</del></p></blockquote><img src="/2023/07/01/1688197856105.jpg" class="" width="120" height="120" title="有事吗？">]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+            <tag> github </tag>
+            
+            <tag> github pages </tag>
+            
+            <tag> 404 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>杂物间</title>
+      <link href="/2023/06/30/%E6%9D%82%E7%89%A9%E9%97%B4/"/>
+      <url>/2023/06/30/%E6%9D%82%E7%89%A9%E9%97%B4/</url>
+      
+        <content type="html"><![CDATA[<p>这里是一个杂物间，似乎什么东西也没有……</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> life </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>test_it</title>
+      <link href="/2023/06/30/test-it/"/>
+      <url>/2023/06/30/test-it/</url>
+      
+        <content type="html"><![CDATA[<p>This is a test content.</p><h2 id="How-to-write"><a href="#How-to-write" class="headerlink" title="How to write?"></a>How to write?</h2><h3 id="Create-a-post"><a href="#Create-a-post" class="headerlink" title="Create a post"></a>Create a post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;your post name here&quot;</span></span><br></pre></td></tr></table></figure><h3 id="write-something"><a href="#write-something" class="headerlink" title="write something"></a>write something</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">\``` languege</span><br><span class="line">content</span><br><span class="line">\``` </span><br><span class="line"></span><br><span class="line">info link: [info](https://ncuxie.github.io/)</span><br></pre></td></tr></table></figure><h3 id="quote"><a href="#quote" class="headerlink" title="quote"></a>quote</h3><blockquote><p>真常应物，真常得性，<br>常应常静，常清静矣。</p></blockquote><h3 id="when"><a href="#when" class="headerlink" title="when"></a>when</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2021.11.17</span><br></pre></td></tr></table></figure><blockquote><p>从那天起，世界有所不同。</p></blockquote><h3 id="End"><a href="#End" class="headerlink" title="End"></a>End</h3><p>This is a end.</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> test </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2023/06/30/hello-world/"/>
+      <url>/2023/06/30/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
