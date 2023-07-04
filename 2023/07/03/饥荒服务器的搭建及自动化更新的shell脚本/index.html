@@ -36,17 +36,17 @@
 
 <h3 id="验证并生成相关文件"><a href="#验证并生成相关文件" class="headerlink" title="验证并生成相关文件"></a>验证并生成相关文件</h3><p>到此为止已经可以尝试启动饥荒了<del>（启动但不完全启动）</del><br>在 &#x2F;home&#x2F;steam&#x2F;common&#x2F;dstserver&#x2F;bin&#x2F; 目录下运行如下命令</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./dontstarve_dedicated_server_nullrenderer console_enabled -persistent_storage_root /home/steam/common/dstserver/dst_save -conf_dir dst -cluster Cluster_1 -shard Master</span><br></pre></td></tr></table></figure>
-<p>意思是，启用控制台，保存在 dst_save 里，设置文件在 dst 里，用 Cluster_1 的存档</p>
+<p>意思是，启用控制台，保存在 dst_save 里，设置文件在 dst 里，用 Cluster_1 的存档 的地表</p>
 <h3 id="上传存档（Cluster-1）-amp-cluster-token-txt"><a href="#上传存档（Cluster-1）-amp-cluster-token-txt" class="headerlink" title="上传存档（Cluster_1） &amp; cluster_token.txt"></a>上传存档（Cluster_1） &amp; cluster_token.txt</h3><p>将 Cluster_1 上传到 dst_save 里<br>cluster_token.txt 是 klei 的服务器 token，放在 Cluster_1 目录下即可</p>
-<h3 id="编写-自动更新-shell-脚本（auto-update-sh）"><a href="#编写-自动更新-shell-脚本（auto-update-sh）" class="headerlink" title="编写 自动更新 shell 脚本（auto_update.sh）"></a>编写 自动更新 shell 脚本（auto_update.sh）</h3><p><em><strong>脚本内容在文章末尾</strong></em><br>在 &#x2F;home&#x2F;steam&#x2F;common&#x2F;dstsever&#x2F;bin&#x2F; 目录下</p>
+<h3 id="编写-自动更新-shell-脚本（auto-update-sh）"><a href="#编写-自动更新-shell-脚本（auto-update-sh）" class="headerlink" title="编写 自动更新 shell 脚本（auto_update.sh）"></a>编写 自动更新 shell 脚本（auto_update.sh）</h3><p><em><strong>脚本内容在文章末尾</strong></em><br>在 &#x2F;home&#x2F;steam&#x2F;common&#x2F;dstsever&#x2F;bin&#x2F; 目录下<br>把 stop update start 内容全部复制进去（记得检查一下）</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim auto_update.sh</span><br></pre></td></tr></table></figure>
-<p>把 stop update start 内容全部复制进去（记得检查一下）<br>赋予脚本执行权限</p>
+<p>赋予脚本执行权限</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 744 auto_update.sh</span><br></pre></td></tr></table></figure>
 
 <h3 id="设置-crontab-定时任务"><a href="#设置-crontab-定时任务" class="headerlink" title="设置 crontab 定时任务"></a>设置 crontab 定时任务</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br></pre></td></tr></table></figure>
 <p>写入如下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 4 * * *  /home/steam/common/dstserver/bin/auto_update.sh</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 4 * * *  /home/steam/common/dstserver/bin/auto_update.sh</span><br></pre></td></tr></table></figure>
+<p>每天第 0 秒,第 4 小时启动一次自动更新脚本</p>
 <hr>
 <h3 id="饥荒自动更新-shell-脚本"><a href="#饥荒自动更新-shell-脚本" class="headerlink" title="饥荒自动更新 shell 脚本"></a>饥荒自动更新 shell 脚本</h3><p>放在与 dontstarve_dedicated_server_nullrenderer 同一个目录下<br>即 &#x2F;home&#x2F;steam&#x2F;common&#x2F;dstserver&#x2F;bin&#x2F; 目录下</p>
 <figure class="highlight shell"><figcaption><span>stop</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pids=$(pgrep -f dontstarve)</span><br><span class="line">if [[ $pids != &quot;&quot; ]]</span><br><span class="line">then</span><br><span class="line">        for pid in $pids</span><br><span class="line">        do</span><br><span class="line">                kill -9 $pid</span><br><span class="line">        done</span><br><span class="line">fi</span><br><span class="line">sleep 10</span><br></pre></td></tr></table></figure>
