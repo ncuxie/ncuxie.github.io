@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>java学习记录</title>
+      <link href="/2023/07/20/java%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+      <url>/2023/07/20/java%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</url>
+      
+        <content type="html"><![CDATA[<span id="more"></span><h3 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h3><p><strong>反射的作用</strong></p><ul><li>获取任意类的所有信息</li><li>结合配置文件动态创建对象</li></ul><p><strong>获取class字节码文件对象的三种方法</strong></p><ul><li>class.forName(“全类名”);</li><li>类名.class;</li><li>对象.getClass();</li></ul><p><strong>获取构造方法，成员方法，成员变量</strong></p><ul><li>get: Constructor Filed Method</li><li>set: Parameter Modifiers Declared</li></ul><h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><p>数据类型不确定时使用</p><h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><h4 id="二叉查找树"><a href="#二叉查找树" class="headerlink" title="二叉查找树"></a>二叉查找树</h4><p>定义:<br>        1.任意 节点最多有两个子节点<br>        2.任意 当前节点大于左子树节点<br>        3.任意 当前节点小于右子树节点</p><h4 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h4><p>定义: 任意节点，左右子树高度差不大于1</p><p><strong>平衡二叉树 如何保持平衡？</strong><br>左旋 or 右旋</p><ul><li>在 左子树的左子树 插入节点<br>  一次右旋</li><li>在 左子树的右子树 插入节点<br>  局部左旋 -&gt; 一次右旋</li><li>在 右子树的右子树 插入节点<br>  一次左旋</li><li>在 右子树的左子树 插入节点<br>  局部右旋 -&gt; 一次左旋</li></ul><h4 id="红黑树（平衡二叉B树）"><a href="#红黑树（平衡二叉B树）" class="headerlink" title="红黑树（平衡二叉B树）"></a>红黑树（平衡二叉B树）</h4><p>不是高度平衡的，不如平衡二叉树严格，但满足红黑规则。</p><ol><li>节点是红色或者黑色</li><li>根节点为黑色（Nil）</li><li>叶子节点为黑色</li><li>两个红色节点不能相恋</li><li>任意节点到其所有后代叶节点的简单路径上，黑色节点数目相同<br>添加的节点默认是红色的<br><img src="/img/Snipaste_2023-07-20_22-17-25.png" alt="红黑策略"></li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>leetcode记录</title>
       <link href="/2023/07/18/leetcode%E8%AE%B0%E5%BD%95/"/>
       <url>/2023/07/18/leetcode%E8%AE%B0%E5%BD%95/</url>
