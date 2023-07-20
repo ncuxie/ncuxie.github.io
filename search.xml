@@ -4,6 +4,46 @@
   
     
     <entry>
+      <title>leetcode记录</title>
+      <link href="/2023/07/18/leetcode%E8%AE%B0%E5%BD%95/"/>
+      <url>/2023/07/18/leetcode%E8%AE%B0%E5%BD%95/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h3><p>1 Two Sum<br>26Remove Duplicates from Sorted Array<br>11Container With Most Water<br>153Sum</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>learn &lt;html css javascript&gt;</title>
+      <link href="/2023/07/17/learn-javascript/"/>
+      <url>/2023/07/17/learn-javascript/</url>
+      
+        <content type="html"><![CDATA[<p>随便记录一点学习过的 js.</p><span id="more"></span><h4 id="var-的覆盖"><a href="#var-的覆盖" class="headerlink" title="var 的覆盖"></a>var 的覆盖</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> a <span class="comment">// a -&gt; undefined</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a)<span class="comment">// 1 F12查看</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a=<span class="number">2</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">alert</span>(a)<span class="comment">// 2</span></span><br></pre></td></tr></table></figure><p>Conclusion： js 允许重复声明变量，但只进行第一次的声明。可以重复赋值进行覆盖。</p><h4 id="时间按钮"><a href="#时间按钮" class="headerlink" title="时间按钮"></a>时间按钮</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">style</span>=<span class="string">&quot;display: block;margin: auto;&quot;</span></span></span><br><span class="line"><span class="tag"><span class="attr">onmouseover</span>=<span class="string">&quot;mytimefunc1()&quot;</span></span></span><br><span class="line"><span class="tag"><span class="attr">onmouseout</span>=<span class="string">&quot;mytimefunc2()&quot;</span></span></span><br><span class="line"><span class="tag">&gt;</span> time <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">&quot;text-align: center;&quot;</span> <span class="attr">id</span>=<span class="string">&quot;mytime&quot;</span>&gt;</span>current time is?<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">function</span> <span class="title function_">mytimefunc1</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;mytime&quot;</span>).<span class="property">innerHTML</span>=<span class="title class_">Date</span>();</span></span><br><span class="line"><span class="language-javascript">&#125;</span></span><br><span class="line"><span class="language-javascript"><span class="keyword">function</span> <span class="title function_">mytimefunc2</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;mytime&quot;</span>).<span class="property">innerHTML</span>=<span class="string">&quot;current time is?&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">&#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure><p><button style="display: block;margin: auto;"        onmouseover="mytimefunc1()"        onmouseout="mytimefunc2()"        > time </button></p><p style="text-align: center;" id="mytime">current time is?</p><script>    function mytimefunc1(){        document.getElementById("mytime").innerHTML=Date();    }    function mytimefunc2(){        document.getElementById("mytime").innerHTML="current time is?";    }</script>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> js </tag>
+            
+            <tag> javascript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>python项目 打包依赖</title>
       <link href="/2023/07/13/python%20%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E4%BE%9D%E8%B5%96/"/>
       <url>/2023/07/13/python%20%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E4%BE%9D%E8%B5%96/</url>
@@ -104,7 +144,7 @@
       <link href="/2023/06/30/%E6%9D%82%E7%89%A9%E9%97%B4/"/>
       <url>/2023/06/30/%E6%9D%82%E7%89%A9%E9%97%B4/</url>
       
-        <content type="html"><![CDATA[<p>这里是一个杂物间，似乎什么东西也没有……</p><span id="more"></span>]]></content>
+        <content type="html"><![CDATA[<p>这里是一个杂物间，似乎什么东西也没有……</p><span id="more"></span><h4 id="2023-7-20"><a href="#2023-7-20" class="headerlink" title="2023.7.20"></a>2023.7.20</h4><blockquote><p>人无远虑必有近忧…</p></blockquote>]]></content>
       
       
       
