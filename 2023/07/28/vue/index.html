@@ -21,6 +21,15 @@
 <p>由于安全原因，ES 模块只能通过 <code>http://</code> 协议工作，也即是浏览器在打开网页时使用的协议。为了使 ES 模块在我们的本地机器上工作，我们需要使用本地的 HTTP 服务器，通过 <code>http://</code> 协议来提供 <code>index.html</code>。</p>
 <p>要启动一个本地的 HTTP 服务器，先安装 <a target="_blank" rel="noopener" href="https://nodejs.org/zh/">Node.js</a>，然后通过命令行在 HTML 文件所在文件夹下运行 <code>npx serve</code>。你也可以使用其他任何可以基于正确的 MIME 类型服务静态文件的 HTTP 服务器。</p>
 <p>可能你也注意到了，这里导入的组件模板是内联的 JavaScript 字符串。如果你正在使用 VSCode，你可以安装 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html">es6-string-html</a> 扩展，然后在字符串前加上一个前缀注释 <code>/*html*/</code> 以高亮语法。</p>
+<p><strong>渐进式框架</strong><br>Vue 的设计非常注重灵活性和“可以被逐步集成”这个特点。根据你的需求场景，你可以用不同的方式使用 Vue：</p>
+<ul>
+<li>无需构建步骤，渐进式增强静态的 HTML</li>
+<li>在任何页面中作为 Web Components 嵌入</li>
+<li>单页应用 (SPA)</li>
+<li>全栈 &#x2F; 服务端渲染 (SSR)</li>
+<li>Jamstack &#x2F; 静态站点生成 (SSG)</li>
+<li>开发桌面端、移动端、WebGL，甚至是命令行终端中的界面</li>
+</ul>
 <h2 id="声明式渲染"><a href="#声明式渲染" class="headerlink" title="声明式渲染"></a>声明式渲染</h2><p>Vue 的核心功能是<em><strong>声明式渲染</strong></em>：通过扩展于标准 HTML 的模板语法，我们可以根据 JavaScript 的状态来描述 HTML 应该是什么样子的。当状态改变时，HTML 会自动更新。</p>
 <p>能在改变时触发更新的状态被称作是<em><strong>响应式</strong></em>的。我们可以使用 Vue 的 <code>reactive()</code> API 来声明响应式状态。由 <code>reactive()</code> 创建的对象都是 JavaScript <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy">Proxy</a>，其行为与普通对象一样：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; reactive &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> counter = <span class="title function_">reactive</span>(&#123;</span><br><span class="line">  <span class="attr">count</span>: <span class="number">0</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(counter.<span class="property">count</span>) <span class="comment">// 0</span></span><br><span class="line">counter.<span class="property">count</span>++</span><br></pre></td></tr></table></figure>
