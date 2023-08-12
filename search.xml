@@ -46,6 +46,25 @@
     
     
     <entry>
+      <title>springboot</title>
+      <link href="/2023/08/02/springboot/"/>
+      <url>/2023/08/02/springboot/</url>
+      
+        <content type="html"><![CDATA[<h2 id="springboot原理"><a href="#springboot原理" class="headerlink" title="springboot原理"></a>springboot原理</h2><ul><li>起步依赖 maven依赖传递</li><li>自动配置 配置类,bean对象自动存入IOC容器<br>自动配置原理：</li></ul><h3 id="自定义starter实现-aliyun-OSS"><a href="#自定义starter实现-aliyun-OSS" class="headerlink" title="自定义starter实现(aliyun OSS)"></a>自定义starter实现(aliyun OSS)</h3><h2 id="三层架构-分层解耦"><a href="#三层架构-分层解耦" class="headerlink" title="三层架构-分层解耦"></a>三层架构-分层解耦</h2><p>controller service dao</p><h3 id="Bean-组件扫描"><a href="#Bean-组件扫描" class="headerlink" title="Bean 组件扫描"></a>Bean 组件扫描</h3><ul><li>Bean的四大注解想要生效，还需要被组件扫描注解@ComponentScan扫描</li><li>@ComponentScan注解没有显式配置，但已经被包含在启动类声明注解@SpringbootApplication中，默认范围是启动类所在包及其子包。</li></ul><h3 id="Bean-注入"><a href="#Bean-注入" class="headerlink" title="Bean 注入"></a>Bean 注入</h3><p>@Autowired注解，默认按照<code>类型</code>进行，存在多个同类型bean则报错。<br>解决方案：<code>@Primary</code> <code>@Autowired+@Qualifier(bean名称)</code> <code>@Resource(name=bean名称)</code></p><h2 id="登录校验"><a href="#登录校验" class="headerlink" title="登录校验"></a>登录校验</h2><h3 id="会话技术"><a href="#会话技术" class="headerlink" title="会话技术"></a>会话技术</h3><h3 id="JWT令牌"><a href="#JWT令牌" class="headerlink" title="JWT令牌"></a>JWT令牌</h3><h3 id="过滤器Filter"><a href="#过滤器Filter" class="headerlink" title="过滤器Filter"></a>过滤器Filter</h3><h3 id="拦截器Interceptor"><a href="#拦截器Interceptor" class="headerlink" title="拦截器Interceptor"></a>拦截器Interceptor</h3><h2 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h2><h3 id="execution"><a href="#execution" class="headerlink" title="execution"></a>execution</h3><h3 id="annotation"><a href="#annotation" class="headerlink" title="@annotation"></a>@annotation</h3><h2 id="Bean管理"><a href="#Bean管理" class="headerlink" title="Bean管理"></a>Bean管理</h2><h3 id="获取bean"><a href="#获取bean" class="headerlink" title="获取bean"></a>获取bean</h3><h3 id="bean的作用域"><a href="#bean的作用域" class="headerlink" title="bean的作用域"></a>bean的作用域</h3><h3 id="第三方bean"><a href="#第三方bean" class="headerlink" title="第三方bean"></a>第三方bean</h3><h3 id="未解之谜"><a href="#未解之谜" class="headerlink" title="未解之谜"></a>未解之谜</h3><p>String can not convert to Date?</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/getDateParam&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getDateParam</span><span class="params">(<span class="meta">@DateTimeFormat(pattern = &quot;yyyy-MM-dd HH-mm-ss&quot;)</span> Date updateTime)</span>&#123;</span><br><span class="line">        System.out.println(updateTime);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;OK&quot;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><h4 id="加油"><a href="#加油" class="headerlink" title="加油"></a>加油</h4><p>你cloud项目做过没？八股文spring源码，底层原理都记住了吗，算法刷够了吗？东西多着呢</p><p>mvc+mybatis一整套。写瑞吉，后边又写牛客论坛，学mq学微服务<br><img src="https://picx.zhimg.com/v2-970942f1566e5c9eb2502f8f97218f81_r.jpg" alt="校招时间线"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> springboot </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>vue</title>
       <link href="/2023/07/28/vue/"/>
       <url>/2023/07/28/vue/</url>
