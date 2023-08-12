@@ -60,6 +60,5 @@ console.log("%c%c\
   I ought to never to have run away from her...\n\
   I ought to have guessed all the affection\n\
 			that lay behind her poor little stratagems.\n\
-  Flowers are so inconsistent!\n\
   But I was too young to know how to love her...\
 ","line-height:28px;","line-height:28px;padding:4px 0px;color:#fff;font-size:16px;");
