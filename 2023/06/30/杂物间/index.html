@@ -1,52 +1,263 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="description"><title>杂物间 | Ncuxie's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/latest/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/grids-responsive-min.min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/latest/jquery.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script type="text/javascript" src="//lib.baomitu.com/clipboard.js/latest/clipboard.min.js"></script><script type="text/javascript" src="//lib.baomitu.com/toastr.js/latest/toastr.min.js"></script><link rel="stylesheet" href="//lib.baomitu.com/toastr.js/latest/toastr.min.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">杂物间</h1><a id="logo" href="/.">Ncuxie's Blog</a><p class="description">nice to see you</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/#"><i class="fa fa-user"> 关于</i></a><a href="/#"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">杂物间</h1><div class="post-meta">2023-06-30</div><div class="post-content"><p>这里是一个杂物间，似乎什么东西也没有……</p>
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>杂物间 | Ncuxie's Blog</title><meta name="author" content="ncuxie"><meta name="copyright" content="ncuxie"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="这里是一个杂物间，似乎什么东西也没有……">
+<meta property="og:type" content="article">
+<meta property="og:title" content="杂物间">
+<meta property="og:url" content="http://example.com/2023/06/30/%E6%9D%82%E7%89%A9%E9%97%B4/index.html">
+<meta property="og:site_name" content="Ncuxie&#39;s Blog">
+<meta property="og:description" content="这里是一个杂物间，似乎什么东西也没有……">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2023-06-30T10:56:17.000Z">
+<meta property="article:modified_time" content="2023-10-24T07:22:24.538Z">
+<meta property="article:author" content="ncuxie">
+<meta property="article:tag" content="life">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2023/06/30/%E6%9D%82%E7%89%A9%E9%97%B4/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '杂物间',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-10-24 15:22:24'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Ncuxie's Blog"><span class="site-name">Ncuxie's Blog</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">杂物间</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-30T10:56:17.000Z" title="发表于 2023-06-30 18:56:17">2023-06-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-10-24T07:22:24.538Z" title="更新于 2023-10-24 15:22:24">2023-10-24</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="杂物间"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>这里是一个杂物间，似乎什么东西也没有……</p>
 <span id="more"></span>
 
-<h3 id="杂乱无章的角落"><a href="#杂乱无章的角落" class="headerlink" title="杂乱无章的角落"></a>杂乱无章的角落</h3><p>数据库索引默认是B+树(多路平衡搜索树)实现<br>01-由浅入深手把手教你精通新版SpringSecurity<br>02-Redis营销视频制作<br>03-史上最全java日志攻略<br>04-带你玩转Zookeeper Dubbo<br>05-数据结构与算法-【优化精简最终版】<br>06-《分布发布订阅消息系统》–Kafka深入探秘者来了<br>07-MongoDB用起来-快速上手和集群搭建<br>08-带你全面理解springcloud微服务架构体系<br>09-数据层全栈方案 springdata 高级应用<br>10-ELK搜索高级<br>11-深入解析docker容器化技术<br>12-全面学习Mybatis插件之Mybatis-Plus<br>13-解密JVM<br>14-微服务架构的分布式事物控制解决方案<br>@ConfigrationProperties 将外部属性批量注入</p>
+<h2 id="杂乱无章的角落"><a href="#杂乱无章的角落" class="headerlink" title="杂乱无章的角落"></a>杂乱无章的角落</h2><p>数据库索引默认是B+树(多路平衡搜索树)实现<br>01-由浅入深手把手教你精通新版SpringSecurity<br>02-Redis营销视频制作<br>03-史上最全java日志攻略<br>04-带你玩转Zookeeper Dubbo<br>05-数据结构与算法-【优化精简最终版】<br>06-《分布发布订阅消息系统》–Kafka深入探秘者来了<br>07-MongoDB用起来-快速上手和集群搭建<br>08-带你全面理解springcloud微服务架构体系<br>09-数据层全栈方案 springdata 高级应用<br>10-ELK搜索高级<br>11-深入解析docker容器化技术<br>12-全面学习Mybatis插件之Mybatis-Plus<br>13-解密JVM<br>14-微服务架构的分布式事物控制解决方案<br>@ConfigrationProperties 将外部属性批量注入</p>
 <p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/32212996">tomcat 与 nginx，apache的区别是什么？</a> </p>
-<h3 id="闲言碎语"><a href="#闲言碎语" class="headerlink" title="闲言碎语"></a>闲言碎语</h3><h4 id="2023-9-12"><a href="#2023-9-12" class="headerlink" title="2023.9.12"></a>2023.9.12</h4><blockquote>
-<p>一身清贫怎敢入繁华</p>
-<p>两袖清风怎敢误佳人</p>
+<h3 id="日记-amp-amp-闲言碎语"><a href="#日记-amp-amp-闲言碎语" class="headerlink" title="日记 &amp;&amp; 闲言碎语"></a>日记 &amp;&amp; 闲言碎语</h3><p>每天23点到24点的时间里，读读书也只读书，听听音乐也只听音乐，品首诗~ <del>(想来是很难的啦)</del> </p>
+<h4 id="2023-10-23"><a href="#2023-10-23" class="headerlink" title="2023.10.23"></a>2023.10.23</h4><p>我以为，爱情也就那样了，时间流逝，与她的记忆就和她一样渐行渐远，逐渐模糊。今夜，埋葬在心底的泪又流出两滴，与她的回忆一幕幕闪过。</p>
+<h4 id="2023-10-22"><a href="#2023-10-22" class="headerlink" title="2023.10.22"></a>2023.10.22</h4><p>定的目标没有完成，到现在还在学redis，痛苦ing</p>
+<p>springcloud，微服务也浅尝辄止🙁</p>
+<p>学习的几个项目都没写完</p>
+<h4 id="2023-10-19"><a href="#2023-10-19" class="headerlink" title="2023.10.19"></a>2023.10.19</h4><blockquote>
+<p>盖文王拘而演周易，仲尼厄而作春秋</p>
+<p>屈原放逐，乃赋离骚，左丘失明，厥有国语，孙子膑脚，兵法修列，不韦迁蜀，世传吕览</p>
+<p>韩非囚秦，说难孤愤</p>
+<p>诗三百篇，大抵贤圣发愤之所为也</p>
 </blockquote>
+<h4 id="2023-10-09"><a href="#2023-10-09" class="headerlink" title="2023.10.09"></a>2023.10.09</h4><p>中秋国庆，玩了十几天，O(∩_∩)O~~</p>
+<h4 id="2023年9月26日"><a href="#2023年9月26日" class="headerlink" title="2023年9月26日"></a>2023年9月26日</h4><p>28号回家过中秋和国庆</p>
+<p>最近有些心急了，急于学习新的技术，急于提升自己。</p>
+<p>仿佛把视频看完了，知识就属于了自己，仿佛把代码抄了一遍，写代码的能力就是自己的了。</p>
+<p>静下心来吧，且轻歌，且徐行，此间有我所爱，何惧，何惧。</p>
+<h4 id="2023年9月25日"><a href="#2023年9月25日" class="headerlink" title="2023年9月25日"></a>2023年9月25日</h4><p>我已经多久没有读书了？我已经多久没有读诗了？或许有一段时间了，走在迷茫的路上。</p>
+<p>是了，真的是生活所迫吗？</p>
+<p>在这里感慨几年没有读诗，为什么不去读呢？</p>
+<p>是没有时间吗？</p>
+<p>我决定，接下来的半个小时什么也不想，只专心读两首诗。</p>
 <blockquote>
-<p>人生中的第二次想努力</p>
+<p>努力前行的过程中，也千万别忘记，偶尔驻足，看看路边的风景呢。</p>
 </blockquote>
-<h4 id="2023-9-11"><a href="#2023-9-11" class="headerlink" title="2023.9.11"></a>2023.9.11</h4><img src="https://picx.zhimg.com/v2-b7e4bd9be0b07afcf02b89c41e55879f_b.jpg"  />
+<h4 id="2023年9月23日"><a href="#2023年9月23日" class="headerlink" title="2023年9月23日"></a>2023年9月23日</h4><p>八月初九 秋分</p>
+<blockquote>
+<p>悲歌可以当泣，远望可以当归。</p>
+</blockquote>
+<h4 id="2023-09-12"><a href="#2023-09-12" class="headerlink" title="2023.09.12"></a>2023.09.12</h4><p>人生中的第二次想改变自己</p>
+<blockquote>
+<p>一身清贫怎敢入繁华，两袖清风怎敢误佳人</p>
+</blockquote>
+<h4 id="2023-09-11"><a href="#2023-09-11" class="headerlink" title="2023.09.11"></a>2023.09.11</h4><img src="https://picx.zhimg.com/v2-b7e4bd9be0b07afcf02b89c41e55879f_b.jpg"  />
 
-<h4 id="2023-8-12"><a href="#2023-8-12" class="headerlink" title="2023.8.12"></a>2023.8.12</h4><blockquote>
+<h4 id="2023-08-12"><a href="#2023-08-12" class="headerlink" title="2023.08.12"></a>2023.08.12</h4><blockquote>
 <p>^_^ （当初高兴是为了什么呢，已经记不清了呢）</p>
 </blockquote>
-<h4 id="2023-8-11"><a href="#2023-8-11" class="headerlink" title="2023.8.11"></a>2023.8.11</h4><blockquote>
+<h4 id="2023-08-11"><a href="#2023-08-11" class="headerlink" title="2023.08.11"></a>2023.08.11</h4><blockquote>
 <p>彼时，他披星戴月，我仍是懵懂</p>
 <p>此刻，我夜点孤灯，寻寻，觅觅</p>
 </blockquote>
-<blockquote>
 <p>曾闻，夕羡朝歌夜弦之高楼，后为倾国倾城之舞袖</p>
+<h4 id="2023-08-10"><a href="#2023-08-10" class="headerlink" title="2023.08.10"></a>2023.08.10</h4><blockquote>
+<p>…….我们大多数人是一种：“没有好好享受过美好青春就要匆匆进入人生下一个关卡，仿佛永远不会停下来”的感觉。而他们甚至也许永远都不需要在人生里闯什么关卡，只是单纯来体验这个美好的世界，普通人一旦停下来连体验美好的资格都没有。</p>
 </blockquote>
-<h4 id="2023-8-10"><a href="#2023-8-10" class="headerlink" title="2023.8.10"></a>2023.8.10</h4><blockquote>
-<p>…….我们大多数人是一种：“没有好好享受过美好青春就要匆匆进入人生下一个关卡，仿佛永远不会停下来”的感觉。</p>
-<p>而他们甚至也许永远都不需要在人生里闯什么关卡，只是单纯来体验这个美好的世界，普通人一旦停下来连体验美好的资格都没有。</p>
-</blockquote>
-<p><em><strong>Refference：</strong></em>真正快乐的人是什么样的？ <a href="%E5%9C%A8%E7%8E%AF%E7%90%83%E5%BD%B1%E5%9F%8E%E8%B7%AF%E8%BF%87%E4%B8%A4%E4%B8%AA%E9%9D%92%E6%98%A5%E6%B4%8B%E6%BA%A2%E7%9A%84%E5%A5%B3%E5%AD%A9%E5%AD%90">在环球影城路过两个青春洋溢的女孩子</a> </p>
-<h4 id="2023-8-10-1"><a href="#2023-8-10-1" class="headerlink" title="2023.8.10"></a>2023.8.10</h4><blockquote>
+<p><em><strong>Refference：</strong></em><a target="_blank" rel="noopener" href="https://www.douban.com/gallery/topic/3460530/">真正快乐的人是什么样的 ?</a> <a target="_blank" rel="noopener" href="https://www.douban.com/group/topic/291461991/?_i=5655489NEcdLwd">在环球影城路过两个青春洋溢的女孩子</a> </p>
+<h4 id="2023-08-10-1"><a href="#2023-08-10-1" class="headerlink" title="2023.08.10"></a>2023.08.10</h4><blockquote>
 <p>一些纯粹、有意思，单纯用好奇心驱动的东西，在你去要求它变得有用的那个瞬间，它就没有原来的乐趣了。</p>
 </blockquote>
 <blockquote>
 <p>功利主义的人生就像一把没有刀鞘的的刀子，锋利但不好看。如果生活这盘菜，用这样的刀来一刀切，便是一种让人难以释怀的悲哀。</p>
 </blockquote>
-<h4 id="2023-7-20"><a href="#2023-7-20" class="headerlink" title="2023.7.20"></a>2023.7.20</h4><img src="https://picx.zhimg.com/v2-788631df1e0ebdfd8947aa6b7c6bf48d_1440w.jpg?source=172ae18b" alt="时间 过去 现在 未来" title="时间 过去 现在 未来" style="zoom:80%;" />
+<p>大一，大二不曾努力，时至大三方是如梦初醒，恍然大悟，却感时不我待，夜长难寐。</p>
+<h4 id="2023-07-20"><a href="#2023-07-20" class="headerlink" title="2023.07.20"></a>2023.07.20</h4><img src="https://picx.zhimg.com/v2-788631df1e0ebdfd8947aa6b7c6bf48d_1440w.jpg?source=172ae18b" alt="时间 过去 现在 未来" title="时间 过去 现在 未来" style="zoom:80%;" />
 
-<h4 id="2023-7-20-1"><a href="#2023-7-20-1" class="headerlink" title="2023.7.20"></a>2023.7.20</h4><blockquote><p>人无远虑必有近忧…</p>
+<h4 id="2023-07-20-1"><a href="#2023-07-20-1" class="headerlink" title="2023.07.20"></a>2023.07.20</h4><blockquote><p>人无远虑必有近忧…</p>
 </blockquote>
 
-<h3 id="我的奋斗"><a href="#我的奋斗" class="headerlink" title="我的奋斗"></a>我的奋斗</h3><h4 id="2023-年-大三上"><a href="#2023-年-大三上" class="headerlink" title="2023 年 大三上"></a>2023 年 大三上</h4><p>准备 <code>卓越计划</code> ，</p>
-<h5 id="9-月"><a href="#9-月" class="headerlink" title="9 月"></a>9 月</h5><h4 id="至-2024-年，秋招"><a href="#至-2024-年，秋招" class="headerlink" title="至 2024 年，秋招"></a>至 2024 年，秋招</h4><p><strong>路途劳顿，请下马休整吧~</strong> </p>
-<div id=1 style="position: relative; padding: 30% 45%;">
+
+
+<h3 id="我做了什么？"><a href="#我做了什么？" class="headerlink" title="我做了什么？"></a>我做了什么？</h3><h4 id="2023-10-09-1"><a href="#2023-10-09-1" class="headerlink" title="2023.10.09"></a>2023.10.09</h4><ul>
+<li><input disabled="" type="checkbox"> redis 学习项目 Day2（<del>明明已经学了好多天了</del> </li>
+<li><input disabled="" type="checkbox"> 继续每日一题</li>
+<li><input disabled="" type="checkbox"> 到了大三才知道，要每天给家里打个电话。还好不算晚。</li>
+</ul>
+<h4 id="2023-09-26"><a href="#2023-09-26" class="headerlink" title="2023.09.26"></a>2023.09.26</h4><ul>
+<li><input checked="" disabled="" type="checkbox"> 删除滥竽充数的文章。</li>
+<li><input disabled="" type="checkbox"> blog主题由 <a target="_blank" rel="noopener" href="https://github.com/pagecho/maupassant">maupassant</a> 更改为 <a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">butterfly</a> .</li>
+</ul>
+<h3 id="我要做什么？"><a href="#我要做什么？" class="headerlink" title="我要做什么？"></a>我要做什么？</h3><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/8a2b2bf6c19b4f23a9bdb9b233eefa73?tpId=295&tqId=642">BM28. 二叉树的最大深度</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/508378c0823c423baa723ce448cbfd0c?tpId=295&tqId=634">BM29. 二叉树中和为某一值的路径（一）</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/ff05d44dfdb04e1d83bdbdab320efbcb?tpId=295&tqId=23452">BM31. 对称的二叉树</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/7298353c24cc42e3bd5f0e0bd3d1d759?tpId=295&tqId=1025038">BM32. 合并二叉树</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/a9d0ecbacef9410ca97463e4a5c83be7?tpId=295&tqId=1374963">BM33. 二叉树的镜像</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/8b3b95850edb4115918ecebdf1b4d222?tpId=295&tqId=23250">BM36. 判断是不是平衡二叉树</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/cf7e25aa97c04cc1a68c8f040e71fb84?tpId=295&tqId=23455">BM39. 序列化二叉树</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/c9480213597e45f4807880c763ddd5f0?tpId=295&tqId=1073834">BM41. 输出二叉树的右视图</a></p>
+<ul>
+<li>springboot starter </li>
+<li>@注解底层原理</li>
+<li>spring 拦截器</li>
+</ul>
+<h2 id="我的奋斗？我的晃荡的青春。"><a href="#我的奋斗？我的晃荡的青春。" class="headerlink" title="我的奋斗？我的晃荡的青春。"></a>我的奋斗？我的晃荡的青春。</h2><h3 id="2023-年-大三上"><a href="#2023-年-大三上" class="headerlink" title="2023 年 大三上"></a>2023 年 大三上</h3><p>准备 <code>卓越计划</code> ，</p>
+<h4 id="9-月"><a href="#9-月" class="headerlink" title="9 月"></a>9 月</h4><ul>
+<li><input disabled="" type="checkbox"> redis</li>
+</ul>
+<h4 id="10月"><a href="#10月" class="headerlink" title="10月"></a>10月</h4><ul>
+<li><input disabled="" type="checkbox"> </li>
+</ul>
+<h3 id="至-2024-年，秋招"><a href="#至-2024-年，秋招" class="headerlink" title="至 2024 年，秋招"></a>至 2024 年，秋招</h3><h4 id="路途劳顿，请下马休整吧"><a href="#路途劳顿，请下马休整吧" class="headerlink" title="路途劳顿，请下马休整吧"></a><strong>路途劳顿，请下马休整吧</strong></h4><div id=1 style="position: relative; padding: 30% 45%;">
 <iframe style="position: absolute; width:50%; height:46.9%;top:0;left:0;"
 src="//www.bilibili.com/blackboard/html5mobileplayer.html?aid=827167753&bvid=BV1wu4y1o7hd&cid=1160539552&page=1&danmaku=0&hideDanmakuButton=1&fjw=0" width="448" height="252"scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="false"></iframe></div>
-</div><div class="tags"><ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/life/" rel="tag">life</a></li></ul></div><div class="post-nav"><a class="pre" href="/2023/07/03/%E9%A5%A5%E8%8D%92%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E6%90%AD%E5%BB%BA%E5%8F%8A%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9B%B4%E6%96%B0%E7%9A%84shell%E8%84%9A%E6%9C%AC/">饥荒服务器的搭建及自动化更新的shell脚本</a><a class="next" href="/2023/06/30/test-it/">test it</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="author-info"><a class="info-avatar" href="/about/" title="关于"><img class="nofancybox" src="/img/avatar.png"/></a><p>To be a better self.</p><a class="info-icon" href="https://github.com/ncuxie" title="Github" target="_blank" style="margin-inline:5px"> <i class="fa fa-github-square" style="margin-inline:5px"></i></a><a class="info-icon" title="Twitter" target="_blank" style="margin-inline:5px"> <i class="fa fa-twitter-square" style="margin-inline:5px"></i></a><a class="info-icon" title="Email" target="_blank" style="margin-inline:5px"> <i class="fa fa-envelope-square" style="margin-inline:5px"></i></a><a class="info-icon" title="RSS" target="_blank" style="margin-inline:5px"> <i class="fa fa-rss-square" style="margin-inline:5px"></i></a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/github/" style="font-size: 15px;">github</a> <a href="/tags/github-pages/" style="font-size: 15px;">github pages</a> <a href="/tags/404/" style="font-size: 15px;">404</a> <a href="/tags/life/" style="font-size: 15px;">life</a> <a href="/tags/dst/" style="font-size: 15px;">dst</a> <a href="/tags/shell/" style="font-size: 15px;">shell</a> <a href="/tags/%E9%A5%A5%E8%8D%92/" style="font-size: 15px;">饥荒</a> <a href="/tags/%E8%81%94%E6%9C%BA/" style="font-size: 15px;">联机</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 15px;">服务器</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/pip/" style="font-size: 15px;">pip</a> <a href="/tags/package/" style="font-size: 15px;">package</a> <a href="/tags/dependency/" style="font-size: 15px;">dependency</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/javascript/" style="font-size: 15px;">javascript</a> <a href="/tags/leetcode/" style="font-size: 15px;">leetcode</a> <a href="/tags/time/" style="font-size: 15px;">time</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/mybatis/" style="font-size: 15px;">mybatis</a> <a href="/tags/redis/" style="font-size: 15px;">redis</a> <a href="/tags/springboot/" style="font-size: 15px;">springboot</a> <a href="/tags/spring/" style="font-size: 15px;">spring</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 15px;">设计模式</a> <a href="/tags/OracleXE112-Win64/" style="font-size: 15px;">OracleXE112_Win64</a> <a href="/tags/%E7%89%9B%E5%AE%A2/" style="font-size: 15px;">牛客</a> <a href="/tags/%E8%87%AA%E5%8A%A8/" style="font-size: 15px;">自动</a> <a href="/tags/script/" style="font-size: 15px;">script</a> <a href="/tags/%E8%84%9A%E6%9C%AC/" style="font-size: 15px;">脚本</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2023/09/06/TODO%20List/">test it</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/09/05/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/">疑难杂症</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/09/03/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">java设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/08/11/java%20%E9%9D%A2%E7%AD%8B/">java 面筋</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/08/04/MyBatis/">MyBatis</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/08/02/springboot/">springboot</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/07/28/vue/">vue</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/07/18/%F0%9F%A4%AA%20%E5%B0%8F%E9%95%87%E5%88%B7%E9%A2%98%E5%AE%B6%20&&%20%E6%BC%AB%E6%97%A0%E6%AD%A2%E5%A2%83%E4%B9%8B%E8%B7%AF%20%F0%9F%98%AD/">🤪 小镇刷题家 && 漫无止境之路 😭</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/07/17/javascript/">JavaScript</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/07/13/python%20script/">python script</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2023 <a href="/." rel="nofollow">Ncuxie's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.js"></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0"></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="/css/search.css?v=1.0.0"><script type="text/javascript" src="/js/search.js?v=1.0.0"></script><script>var search_path = 'search.xml';
-if (search_path.length == 0) {
-  search_path = 'search.xml';
-}
-var path = '/' + search_path;
-searchFunc(path, 'local-search-input', 'local-search-result');
-</script><script type="text/javascript" color="0,0,0" opacity="0.3" zIndex="-2" count="120" src="//lib.baomitu.com/canvas-nest.js/latest/canvas-nest.js"></script><script type="text/javascript" src="/js/love.js?v=1.0.0"></script><script type="text/javascript" src="/js/no_select.js?v=1.0.0"></script><script type="text/javascript" src="/js/copycode.js?v=1.0.0" successtext="复制成功！"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css?v=1.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script></div></body></html>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">ncuxie</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/06/30/%E6%9D%82%E7%89%A9%E9%97%B4/">http://example.com/2023/06/30/%E6%9D%82%E7%89%A9%E9%97%B4/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Ncuxie's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/life/">life</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/07/03/%E9%A5%A5%E8%8D%92%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E6%90%AD%E5%BB%BA%E5%8F%8A%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9B%B4%E6%96%B0%E7%9A%84shell%E8%84%9A%E6%9C%AC/" title="饥荒服务器的搭建及自动化更新的shell脚本"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">饥荒服务器的搭建及自动化更新的shell脚本</div></div></a></div><div class="next-post pull-right"><a href="/2023/06/30/test-it/" title="test it"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">test it</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">ncuxie</div><div class="author-info__description">description</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%82%E4%B9%B1%E6%97%A0%E7%AB%A0%E7%9A%84%E8%A7%92%E8%90%BD"><span class="toc-number">1.</span> <span class="toc-text">杂乱无章的角落</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E8%AE%B0-amp-amp-%E9%97%B2%E8%A8%80%E7%A2%8E%E8%AF%AD"><span class="toc-number">1.1.</span> <span class="toc-text">日记 &amp;&amp; 闲言碎语</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2023-10-23"><span class="toc-number">1.1.1.</span> <span class="toc-text">2023.10.23</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2023-10-22"><span class="toc-number">1.1.2.</span> <span class="toc-text">2023.10.22</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2023-10-19"><span class="toc-number">1.1.3.</span> <span class="toc-text">2023.10.19</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2023-10-09"><span class="toc-number">1.1.4.</span> <span class="toc-text">2023.10.09</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2023%E5%B9%B49%E6%9C%8826%E6%97%A5"><span class="toc-number">1.1.5.</span> <span class="toc-text">2023年9月26日</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2023%E5%B9%B49%E6%9C%8825%E6%97%A5"><span class="toc-number">1.1.6.</span> <span class="toc-text">2023年9月25日</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2023%E5%B9%B49%E6%9C%8823%E6%97%A5"><span class="toc-number">1.1.7.</span> <span class="toc-text">2023年9月23日</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2023-09-12"><span class="toc-number">1.1.8.</span> <span class="toc-text">2023.09.12</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2023-09-11"><span class="toc-number">1.1.9.</span> <span class="toc-text">2023.09.11</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2023-08-12"><span class="toc-number">1.1.10.</span> <span class="toc-text">2023.08.12</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2023-08-11"><span class="toc-number">1.1.11.</span> <span class="toc-text">2023.08.11</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2023-08-10"><span class="toc-number">1.1.12.</span> <span class="toc-text">2023.08.10</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2023-08-10-1"><span class="toc-number">1.1.13.</span> <span class="toc-text">2023.08.10</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2023-07-20"><span class="toc-number">1.1.14.</span> <span class="toc-text">2023.07.20</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2023-07-20-1"><span class="toc-number">1.1.15.</span> <span class="toc-text">2023.07.20</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%91%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.2.</span> <span class="toc-text">我做了什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2023-10-09-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">2023.10.09</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2023-09-26"><span class="toc-number">1.2.2.</span> <span class="toc-text">2023.09.26</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%91%E8%A6%81%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.3.</span> <span class="toc-text">我要做什么？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E5%A5%8B%E6%96%97%EF%BC%9F%E6%88%91%E7%9A%84%E6%99%83%E8%8D%A1%E7%9A%84%E9%9D%92%E6%98%A5%E3%80%82"><span class="toc-number">2.</span> <span class="toc-text">我的奋斗？我的晃荡的青春。</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2023-%E5%B9%B4-%E5%A4%A7%E4%B8%89%E4%B8%8A"><span class="toc-number">2.1.</span> <span class="toc-text">2023 年 大三上</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#9-%E6%9C%88"><span class="toc-number">2.1.1.</span> <span class="toc-text">9 月</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10%E6%9C%88"><span class="toc-number">2.1.2.</span> <span class="toc-text">10月</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%B3-2024-%E5%B9%B4%EF%BC%8C%E7%A7%8B%E6%8B%9B"><span class="toc-number">2.2.</span> <span class="toc-text">至 2024 年，秋招</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%AF%E9%80%94%E5%8A%B3%E9%A1%BF%EF%BC%8C%E8%AF%B7%E4%B8%8B%E9%A9%AC%E4%BC%91%E6%95%B4%E5%90%A7"><span class="toc-number">2.2.1.</span> <span class="toc-text">路途劳顿，请下马休整吧</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/22/linux/" title="linux centos7">linux centos7</a><time datetime="2023-09-22T07:02:59.000Z" title="发表于 2023-09-22 15:02:59">2023-09-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/05/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" title="疑难杂症">疑难杂症</a><time datetime="2023-09-05T15:17:26.000Z" title="发表于 2023-09-05 23:17:26">2023-09-05</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/09/03/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="java设计模式">java设计模式</a><time datetime="2023-09-03T10:36:04.000Z" title="发表于 2023-09-03 18:36:04">2023-09-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/18/%E5%B0%8F%E9%95%87%E5%88%B7%E9%A2%98%E5%AE%B6%20&amp;&amp;%20%E6%BC%AB%E6%97%A0%E6%AD%A2%E5%A2%83%E4%B9%8B%E8%B7%AF/" title="小镇刷题家 &amp;&amp; 漫无止境之路">小镇刷题家 &amp;&amp; 漫无止境之路</a><time datetime="2023-07-18T09:17:14.000Z" title="发表于 2023-07-18 17:17:14">2023-07-18</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/07/17/javascript/" title="JavaScript">JavaScript</a><time datetime="2023-07-17T15:44:33.000Z" title="发表于 2023-07-17 23:44:33">2023-07-17</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 By ncuxie</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
