@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Blog 折腾之路 | Frio&#39;s Blog</title>
+<meta name="description" content="青春似水，流年">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://ncuxie.github.io/favicon.ico?v=1740900427981">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://ncuxie.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://ncuxie.github.io">Frio&#39;s Blog</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>Blog 折腾之路</h1>
+            <p class="article-meta">
+              2024-07-12
+              
+            </p>
+            
+            <div class="post-content" v-pre>
+              <p>为了写blog，准确来说是做一个 <code>美观</code>、<code>方便</code> 的 blog website，经历许许多多的折腾。于是记录于此，以便日后自我陶醉，又或是帮助他人。</p>
+<!-- more -->
+<h4 id="保存备份md源文件"><strong>保存备份.md源文件</strong></h4>
+<p><code>hexo</code> 或者 <code>Gridea</code> 都是将 <code>.md</code> 格式的文件(也就是写 blog 的文件格式)，转换成 <code>.html</code> 后发布(<code>deployment</code>)，于是我们的 <code>GitHub</code> 或者服务器上是没有最初的 <code>.md</code> 源文件的。</p>
+<p>最简单的办法就是，<em><strong>用网盘备份</strong></em>。</p>
+<p>但是，我习惯用的是 <code>OneDrive</code> ，而它是不能指定备份文件夹的（😣为什么不可以啊，魂淡）。</p>
+<p>于是，这边用 <code>mklink</code> 建一个软连接来备份。</p>
+<h5 id="in-windows-system">In Windows System</h5>
+<p>先，我们查看一下 <code>mklink</code> 这个小玩意该怎么用？</p>
+<pre><code class="language-bash">mklink
+</code></pre>
+<p>看看语法，</p>
+<pre><code>C:\Users\[your name]&gt;mklink
+创建符号链接。
+
+MKLINK [[/D] | [/H] | [/J]] Link Target
+
+        /D      创建目录符号链接。默认为文件符号链接。
+        /H      创建硬链接而非符号链接。 
+        /J      创建目录联接。
+        Link    指定新的符号链接名称。
+        Target  指定新链接引用的路径(相对或绝对)。
+</code></pre>
+<p>很好，现在你已经学会了 <code>mklink</code> 的所有用法，<s>是时候解开 “哥德巴赫猜想” 了</s>。</p>
+<pre><code class="language-bash">mklink /D [your onedrive dir] [target dir]
+</code></pre>
+<h5 id="温馨提醒">温馨提醒</h5>
+<p>呵呵，这就像走了么？我会告诉你接下来还有注意事项乜？</p>
+<p>[your onedrive dir]</p>
+<p>— 这是用来链接 [target dir] 的文件夹，<strong>不能被提前创建</strong>，也就是说 <code>mklink</code> 命令已经是大人了，它能够独立、自主地创建文件夹了，而不再依赖你。</p>
+<p>— 如果目录中带有空格，带空格的路径用英文双引号 <code>&quot;</code> 括起来即可。</p>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://ncuxie.github.io/post/jing-shen-cuo-luan/">
+                <h3 class="post-title">
+                  精神错乱
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+          
+            <div class="paper" data-aos="fade-in">
+              <div id="gitalk-container"></div>
+            </div>
+          
+
+          
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://ncuxie.github.io/images/avatar.png?v=1740900427981" class="no-responsive avatar">
+    <div class="text-muted">青春似水，流年</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/chun-zhao-tou-jian-li/">春招投简历</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/blog-zhe-teng-zhi-lu/">Blog 折腾之路</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/jing-shen-cuo-luan/">精神错乱</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/docker-连不上-mariadb-mysql？/">Docker 无法连接 MariaDB/MySQL ?</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/linux centos7/">linux centos7</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/疑难杂症/">疑难杂症，请入此间</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/java设计模式/">java设计模式</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/小镇刷题家 &amp;&amp; 漫无止境之路/">小镇刷题家 &amp;&amp; 漫无止境之路</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/python script/">python script</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/饥荒服务器的搭建及自动化更新的shell脚本/">饥荒服务器的搭建及自动化更新的shell脚本</a>
+            </li>
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://ncuxie.github.io/tag/Esx5lDlQ8/" class="badge warning">
+          Docker
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/_idb9G-nZY/" class="badge success">
+          MariaDB
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/jOxNVRReNV/" class="badge secondary">
+          mysql
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/X9rkdiHHO/" class="badge secondary">
+          linux
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/LA8WkVxvSf/" class="badge warning">
+          centos
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/6UOdDA7Sqy/" class="badge ">
+          centos7
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/KAU6QC5Uft/" class="badge success">
+          hexo
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/l4MZPMWGNQ/" class="badge secondary">
+          github
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/fy9hTbl0uX/" class="badge success">
+          github pages
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/9emwM8egjV/" class="badge secondary">
+          404
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/k5WPEKLa0b/" class="badge warning">
+          OracleXE112_Win64
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/ykqRLMNe1c/" class="badge ">
+          设计模式
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/PbewGjhyU2/" class="badge secondary">
+          leetcode
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/j28d-M1J20/" class="badge success">
+          牛客
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/AplO39HvdF/" class="badge secondary">
+          python
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/qo2npxmC9N/" class="badge warning">
+          pip
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/j515iZpVsx/" class="badge secondary">
+          package
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/xKQ6Dt4pqeN/" class="badge ">
+          dependency
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/GrBRaSduywG/" class="badge secondary">
+          dst
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/ksdioZ95OMy/" class="badge secondary">
+          shell
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/wBNzL5SgbZU/" class="badge secondary">
+          饥荒
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/vOea4rvHO8X/" class="badge success">
+          联机
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/_MSDSoExFDb/" class="badge ">
+          服务器
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/ZPPVd5qKwBu/" class="badge secondary">
+          自动
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/31zWxdTKLdX/" class="badge ">
+          script
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/ZYhgyO5rOag/" class="badge warning">
+          脚本
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/MwQ1Lx7ukfw/" class="badge success">
+          life
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://ncuxie.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'Ov23limb5t4fikwFUs1b',
+        clientSecret: '9706007f15f41779fead307e1e8e3a2bdc8be2a4',
+        repo: 'ncuxie.github.io',
+        owner: 'ncuxie',
+        admin: ['ncuxie'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

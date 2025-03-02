@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>饥荒服务器的搭建及自动化更新的shell脚本 | Frio&#39;s Blog</title>
+<meta name="description" content="青春似水，流年">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://ncuxie.github.io/favicon.ico?v=1740900427981">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://ncuxie.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://ncuxie.github.io">Frio&#39;s Blog</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>饥荒服务器的搭建及自动化更新的shell脚本</h1>
+            <p class="article-meta">
+              2023-07-03
+              
+                <a href="https://ncuxie.github.io/tag/GrBRaSduywG/" class="badge secondary">
+                  dst
+                </a>
+              
+                <a href="https://ncuxie.github.io/tag/ksdioZ95OMy/" class="badge ">
+                  shell
+                </a>
+              
+                <a href="https://ncuxie.github.io/tag/wBNzL5SgbZU/" class="badge ">
+                  饥荒
+                </a>
+              
+                <a href="https://ncuxie.github.io/tag/vOea4rvHO8X/" class="badge warning">
+                  联机
+                </a>
+              
+                <a href="https://ncuxie.github.io/tag/_MSDSoExFDb/" class="badge success">
+                  服务器
+                </a>
+              
+                <a href="https://ncuxie.github.io/tag/ZPPVd5qKwBu/" class="badge warning">
+                  自动
+                </a>
+              
+                <a href="https://ncuxie.github.io/tag/31zWxdTKLdX/" class="badge success">
+                  script
+                </a>
+              
+                <a href="https://ncuxie.github.io/tag/ZYhgyO5rOag/" class="badge secondary">
+                  脚本
+                </a>
+              
+            </p>
+            
+            <div class="post-content" v-pre>
+              <p>饥荒（dst）联机，尤其是 steam 饥荒联机的时候，除了房主，其他人往往是黄色，红色信号，延迟拉满，不时掉线，丢包严重（甚至无师自通地学会了瞬移），可谓是饱受摧残，痛不欲生。</p>
+<!--more-->
+<p>残忍的现状将房主与他的小伙伴们分隔开，一层可悲的厚障壁悄无声息地出现。然而，自幼聪敏的房主怎会坐以待毙？！<s>\ 是时候展示真正的技术啦！！！</s></p>
+<p>建立一个优质的饥荒联机服务器，拯救房主的小伙伴们于水深火热之中，已经迫在眉睫！</p>
+<h3 id="环境依赖">环境依赖</h3>
+<p>CentOS 7.*</p>
+<pre><code class="language-bash">yum -y install glibc.i686 libstdc++.i686 libcurl4-gnutls-dev.i686 libcurl.i686
+</code></pre>
+<p>Ubuntu <em>.</em></p>
+<pre><code class="language-sh">sudo apt-get install libstdc++6:i386 libgcc1:i386 libcurl4-gnutls-dev:i386 lib32gcc1
+</code></pre>
+<h3 id="创建-steam-用户">创建 steam 用户</h3>
+<p>创建 steam 用户, -d 将 /home/steam 目录分配给用户 steam</p>
+<pre><code class="language-sh">useradd -d /home/steam steam
+</code></pre>
+<p>修改 steam 用户密码</p>
+<pre><code class="language-sh">passwd steam
+</code></pre>
+<p>切换至 steam 用户</p>
+<pre><code class="language-sh">su steam
+</code></pre>
+<p><s>删除 steam 用户, -r 并将所属目录删除</s></p>
+<pre><code class="language-sh">userdel -r steam # 有问题才需要删除！
+</code></pre>
+<h3 id="安装-steamcmd">安装 steamcmd</h3>
+<p>创建 ~/steamcmd 目录用于安装, ~ 是 steam 用户的所属目录,即 /home/steam</p>
+<pre><code class="language-sh">mkdir ~/steamcmd
+</code></pre>
+<p>下载 steamcmd 安装文件</p>
+<pre><code class="language-sh">wget -P ~/steamcmd https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz
+</code></pre>
+<p>解压压缩包</p>
+<pre><code class="language-sh">tar -xvzf steamcmd_linux.tar.gz
+</code></pre>
+<h3 id="下载饥荒">下载饥荒</h3>
+<p>启动 SteamCMD</p>
+<pre><code class="language-sh">./steamcmd.sh
+</code></pre>
+<p>指定下载目录</p>
+<pre><code class="language-sh">force_install_dir /home/steam/common/dstserver
+</code></pre>
+<p>匿名登录（首次登陆可能会 retry 几次，可以重启 steamcmd 再试）</p>
+<pre><code class="language-sh">login anonymous
+</code></pre>
+<p>下载饥荒</p>
+<pre><code class="language-sh">app_update 343050 validate
+</code></pre>
+<h3 id="解决依赖缺失">解决依赖缺失</h3>
+<p>启动服务器会显示缺少关键的组件 libcurl-gnutls.so.4</p>
+<pre><code class="language-sh">ln -s /usr/lib/libcurl.so.4 /home/steam/common/dstserver/bin/lib32/libcurl-gnutls.so.4
+</code></pre>
+<h3 id="验证并生成相关文件">验证并生成相关文件</h3>
+<p>到此为止已经可以尝试启动饥荒了~~（启动但不完全启动）~~<br>
+在 /home/steam/common/dstserver/bin/ 目录下运行如下命令</p>
+<pre><code class="language-sh">./dontstarve_dedicated_server_nullrenderer console_enabled -persistent_storage_root /home/steam/common/dstserver/dst_save -conf_dir dst -cluster Cluster_1 -shard Master
+</code></pre>
+<p>意思是，启用控制台，保存在 dst_save 里，设置文件在 dst 里，用 Cluster_1 的存档 的地表</p>
+<h3 id="上传存档-cluster_tokentxt">上传存档 &amp; cluster_token.txt</h3>
+<p>将存档（Cluster_1） 上传到 dst_save 里<br>
+cluster_token.txt 是 klei 的服务器 token，放在 Cluster_1 目录下即可</p>
+<h3 id="编写-自动更新-shell-脚本">编写 自动更新 shell 脚本</h3>
+<p><em><strong>脚本内容在文章末尾</strong></em><br>
+在 /home/steam/common/dstsever/bin/ 目录下<br>
+把 stop update start 内容全部复制进去（记得检查一下）</p>
+<pre><code class="language-sh">vim auto_update.sh
+</code></pre>
+<p>赋予脚本执行权限</p>
+<pre><code class="language-sh">chmod 744 auto_update.sh
+</code></pre>
+<h3 id="设置-crontab-定时任务">设置 crontab 定时任务</h3>
+<pre><code class="language-sh">crontab -e
+</code></pre>
+<p>写入如下内容：</p>
+<pre><code class="language-sh">0 4 * * *  /home/steam/common/dstserver/bin/auto_update.sh
+</code></pre>
+<p>每天第 0 秒,第 4 小时启动一次自动更新脚本</p>
+<h3 id="检查饥荒进程">检查饥荒进程</h3>
+<p>此时应有两个进程</p>
+<pre><code class="language-sh">pgrep -f dontstarve
+</code></pre>
+<hr>
+<h3 id="饥荒自动更新-shell-脚本">饥荒自动更新 shell 脚本</h3>
+<p>放在与 dontstarve_dedicated_server_nullrenderer 同一个目录下<br>
+即 /home/steam/common/dstserver/bin/ 目录下</p>
+<pre><code class="language-shell">pids=$(pgrep -f dontstarve)
+if [[ $pids != &quot;&quot; ]]
+then
+        for pid in $pids
+        do
+                kill -9 $pid
+        done
+fi
+sleep 10
+</code></pre>
+<p>pgrep -f dontstarve 查找有 “dontstarve” 的进程号<br>
+变量 pids 不为空则 kill 掉所有相关进程<br>
+随后 sleep 10 秒 等待进程彻底结束</p>
+<pre><code class="language-shell">~/steamcmd/steamcmd.sh \
++force_install_dir /home/steam/common/dstserver \
++login anonymous \
++app_update 343050 validate \
++quit
+</code></pre>
+<p>运行 steamcmd.sh<br>
+随后执行下列命令：</p>
+<ul>
+<li>force_install_dir /home/steam/common/dstserver</li>
+<li>login anonymous</li>
+<li>app_update 343050 validate</li>
+<li>quit</li>
+</ul>
+<p>分别对应：</p>
+<ul>
+<li>指定安装目录</li>
+<li>匿名登录</li>
+<li>更新饥荒</li>
+<li>退出 steamcmd</li>
+</ul>
+<pre><code class="language-shell">cd ~/common/dstserver/bin/
+nohup ./dontstarve_dedicated_server_nullrenderer console_enabled -persistent_storage_root /home/steam/common/dstserver/dst_save -conf_dir dst -cluster Cluster_1 -shard Master &gt;/dev/null 2&gt;&amp;1 &amp;
+nohup ./dontstarve_dedicated_server_nullrenderer console_enabled -persistent_storage_root /home/steam/common/dstserver/dst_save -conf_dir dst -cluster Cluster_1 -shard Caves &gt;/dev/null 2&gt;&amp;1 &amp;
+</code></pre>
+<p>在后台启动饥荒地表，洞穴服务器</p>
+<h3 id="references">References</h3>
+<p>[1] https://zhuanlan.zhihu.com/p/146379848<br>
+[2] https://github.com/cuukenn/dontstarveserver<br>
+[3] <a href="https://forums.kleientertainment.com/forums/topic/59204-server-stopped-working-caves-beta/">Error, failed to change working directory to ../data</a></p>
+<hr>
+<p>{% blockquote End ---- for my love %}<br>
+下次再遇到喜欢的人，千万要记得只做朋友，<br>
+不远不近的欣赏，淡淡的喜欢，<br>
+不至于到了最后，<br>
+乱了初心，败了芳华。<br>
+{% endblockquote %}</p>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://ncuxie.github.io/post/杂物间/">
+                <h3 class="post-title">
+                  小梦浮生
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+          
+            <div class="paper" data-aos="fade-in">
+              <div id="gitalk-container"></div>
+            </div>
+          
+
+          
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://ncuxie.github.io/images/avatar.png?v=1740900427981" class="no-responsive avatar">
+    <div class="text-muted">青春似水，流年</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/chun-zhao-tou-jian-li/">春招投简历</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/blog-zhe-teng-zhi-lu/">Blog 折腾之路</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/jing-shen-cuo-luan/">精神错乱</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/docker-连不上-mariadb-mysql？/">Docker 无法连接 MariaDB/MySQL ?</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/linux centos7/">linux centos7</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/疑难杂症/">疑难杂症，请入此间</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/java设计模式/">java设计模式</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/小镇刷题家 &amp;&amp; 漫无止境之路/">小镇刷题家 &amp;&amp; 漫无止境之路</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/python script/">python script</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/饥荒服务器的搭建及自动化更新的shell脚本/">饥荒服务器的搭建及自动化更新的shell脚本</a>
+            </li>
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://ncuxie.github.io/tag/Esx5lDlQ8/" class="badge ">
+          Docker
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/_idb9G-nZY/" class="badge ">
+          MariaDB
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/jOxNVRReNV/" class="badge ">
+          mysql
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/X9rkdiHHO/" class="badge secondary">
+          linux
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/LA8WkVxvSf/" class="badge secondary">
+          centos
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/6UOdDA7Sqy/" class="badge success">
+          centos7
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/KAU6QC5Uft/" class="badge secondary">
+          hexo
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/l4MZPMWGNQ/" class="badge ">
+          github
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/fy9hTbl0uX/" class="badge success">
+          github pages
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/9emwM8egjV/" class="badge success">
+          404
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/k5WPEKLa0b/" class="badge warning">
+          OracleXE112_Win64
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/ykqRLMNe1c/" class="badge warning">
+          设计模式
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/PbewGjhyU2/" class="badge ">
+          leetcode
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/j28d-M1J20/" class="badge warning">
+          牛客
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/AplO39HvdF/" class="badge success">
+          python
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/qo2npxmC9N/" class="badge success">
+          pip
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/j515iZpVsx/" class="badge success">
+          package
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/xKQ6Dt4pqeN/" class="badge secondary">
+          dependency
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/GrBRaSduywG/" class="badge warning">
+          dst
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/ksdioZ95OMy/" class="badge warning">
+          shell
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/wBNzL5SgbZU/" class="badge ">
+          饥荒
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/vOea4rvHO8X/" class="badge secondary">
+          联机
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/_MSDSoExFDb/" class="badge secondary">
+          服务器
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/ZPPVd5qKwBu/" class="badge secondary">
+          自动
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/31zWxdTKLdX/" class="badge success">
+          script
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/ZYhgyO5rOag/" class="badge ">
+          脚本
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/MwQ1Lx7ukfw/" class="badge success">
+          life
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://ncuxie.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'Ov23limb5t4fikwFUs1b',
+        clientSecret: '9706007f15f41779fead307e1e8e3a2bdc8be2a4',
+        repo: 'ncuxie.github.io',
+        owner: 'ncuxie',
+        admin: ['ncuxie'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

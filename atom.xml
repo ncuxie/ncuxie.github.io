@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://ncuxie.github.io</id>
+    <title>Frio&apos;s Blog</title>
+    <updated>2025-03-02T07:27:09.932Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://ncuxie.github.io"/>
+    <link rel="self" href="https://ncuxie.github.io/atom.xml"/>
+    <subtitle>青春似水，流年</subtitle>
+    <logo>https://ncuxie.github.io/images/avatar.png</logo>
+    <icon>https://ncuxie.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2025, Frio&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[Blog 折腾之路]]></title>
+        <id>https://ncuxie.github.io/post/blog-zhe-teng-zhi-lu/</id>
+        <link href="https://ncuxie.github.io/post/blog-zhe-teng-zhi-lu/">
+        </link>
+        <updated>2024-07-12T13:29:39.000Z</updated>
+        <summary type="html"><![CDATA[<p>为了写blog，准确来说是做一个 <code>美观</code>、<code>方便</code> 的 blog website，经历许许多多的折腾。于是记录于此，以便日后自我陶醉，又或是帮助他人。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>为了写blog，准确来说是做一个 <code>美观</code>、<code>方便</code> 的 blog website，经历许许多多的折腾。于是记录于此，以便日后自我陶醉，又或是帮助他人。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[精神错乱]]></title>
+        <id>https://ncuxie.github.io/post/jing-shen-cuo-luan/</id>
+        <link href="https://ncuxie.github.io/post/jing-shen-cuo-luan/">
+        </link>
+        <updated>2024-06-29T15:51:36.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Docker 无法连接 MariaDB/MySQL ?]]></title>
+        <id>https://ncuxie.github.io/post/docker-连不上-mariadb-mysql？/</id>
+        <link href="https://ncuxie.github.io/post/docker-连不上-mariadb-mysql？/">
+        </link>
+        <updated>2024-05-31T02:27:27.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[linux centos7]]></title>
+        <id>https://ncuxie.github.io/post/linux centos7/</id>
+        <link href="https://ncuxie.github.io/post/linux centos7/">
+        </link>
+        <updated>2023-09-22T07:02:59.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[疑难杂症，请入此间]]></title>
+        <id>https://ncuxie.github.io/post/疑难杂症/</id>
+        <link href="https://ncuxie.github.io/post/疑难杂症/">
+        </link>
+        <updated>2023-09-05T15:17:26.000Z</updated>
+        <summary type="html"><![CDATA[<p>疑难杂症，请入此间 ~ ~</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>疑难杂症，请入此间 ~ ~</p>
+]]></content>
+    </entry>
+</feed>

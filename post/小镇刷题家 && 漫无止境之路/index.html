@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>小镇刷题家 &amp;&amp; 漫无止境之路 | Frio&#39;s Blog</title>
+<meta name="description" content="青春似水，流年">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://ncuxie.github.io/favicon.ico?v=1740900427981">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://ncuxie.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://ncuxie.github.io">Frio&#39;s Blog</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>小镇刷题家 &amp;&amp; 漫无止境之路</h1>
+            <p class="article-meta">
+              2023-07-18
+              
+                <a href="https://ncuxie.github.io/tag/PbewGjhyU2/" class="badge secondary">
+                  leetcode
+                </a>
+              
+                <a href="https://ncuxie.github.io/tag/j28d-M1J20/" class="badge warning">
+                  牛客
+                </a>
+              
+            </p>
+            
+            <div class="post-content" v-pre>
+              <p>🤪 小镇刷题家 &amp;&amp; 漫无止境之路 😭</p>
+<!-- more -->
+<h2 id="剑指offer">剑指offer</h2>
+<p>所谓，少壮不努力，老大徒伤悲。大一大二不学算法，大三大四徒伤悲。</p>
+<p>现在开始还来得及么？我不知道，不过呢，我曾听闻，</p>
+<blockquote>
+<p>种一棵树最好的时机是十年前，然后是现在。</p>
+</blockquote>
+<p>其实我没有什么感触呢。；）</p>
+<p><em><strong>TODO LIST：</strong></em></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3966031"><label class="task-list-item-label" for="task-item-3966031"> JZ36</label></li>
+<li>[ ]</li>
+</ul>
+<h3 id="jz3-数组中重复的数字"><strong>JZ3 数组中重复的数字</strong></h3>
+<p>在一个长度为n的数组里的所有数字都在0到n-1的范围内。 数组中某些数字是重复的，但不知道有几个数字是重复的。也不知道每个数字重复几次。请找出数组中任意一个重复的数字。 例如，如果输入长度为7的数组[2,3,1,0,2,5,3]，那么对应的输出是2或者3。存在不合法的输入的话输出-1<br>
+数据范围：0≤n≤10000	进阶：时间复杂度O(n) ，空间复杂度O(n)<br>
+输入：[2,3,1,0,2,5,3]	返回值：2	说明：2或3都是对的</p>
+<pre><code class="language-java">public static int duplicate (int[] numbers) {
+    HashSet&lt;Integer&gt; hashSet = new HashSet&lt;&gt;();
+    for (int i:numbers) {
+        if (!hashSet.add(i))
+            return i;
+    } return -1;
+}
+</code></pre>
+<h3 id="jz4-二维数组中的查找"><strong>JZ4 二维数组中的查找</strong></h3>
+<p>在一个二维数组array中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。<br>
+[[ 1, 2, 8, 9],<br>
+[ 2, 4, 9,12],<br>
+[ 4, 7,10,13],<br>
+[ 6, 8,11,15]]<br>
+给定 target = 7，返回 true。给定 target = 3，返回 false。</p>
+<pre><code class="language-java">// 逐行二分查找
+public boolean binarySearch(int target, int[] array) {
+    int l = 0, r = array.length-1;
+    int mid;
+    while (l &lt;= r) {
+        mid = (l + r) / 2;
+        if (array[mid] == target) return true;
+        else if (array[mid] &lt; target) l = mid+1;
+        else r = mid-1;   // array[mid] &gt; target
+    }
+    return false;
+}
+public boolean Find(int target, int[][] array) {
+    // write code here
+    if (array[0].length == 0 || array[0][0] &gt; target) return false;
+    for (int[] a:array){
+        if (binarySearch(target,a)) return true;
+    }
+    return false;
+}
+
+// 从左下角开始,利用数组特性
+// current &lt; target 向右查找
+// current &gt; target 向左查找
+</code></pre>
+<h3 id="jz5-替换空格"><strong>JZ5 替换空格</strong></h3>
+<p>请实现一个函数，将一个字符串s中的每个空格替换成“%20”。<br>
+例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。<br>
+数据范围:0≤len(s)≤1000。<br>
+保证字符串中的字符为大写英文字母、小写英文字母和空格中的一种。</p>
+<pre><code class="language-java">public static String replaceSpace (String s) {
+    return s.replace(&quot; &quot;,&quot;%20&quot;);
+}
+</code></pre>
+<p>输入一个链表的头节点，按链表从尾到头的顺序返回每个节点的值（用数组返回）。<br>
+如输入{1,2,3}的链表如下图:<br>
+<img src="https://uploadfiles.nowcoder.com/images/20210717/557336_1626506480516/103D87B58E565E87DEFA9DD0B822C55F" alt="" loading="lazy"></p>
+<pre><code class="language-java">//public static ArrayList&lt;Integer&gt; arrayList = new ArrayList&lt;&gt;();
+public static void ff(ListNode node) {
+    if (node != null) {
+        ff(node.next);
+        arrayList.add(node.val);
+    }
+}
+public ArrayList&lt;Integer&gt; printListFromTailToHead(ListNode listNode) {
+    ff(listNode);
+    return arrayList;
+}
+</code></pre>
+<h3 id="jz6-从尾到头打印链表"><strong>JZ6</strong> <strong>从尾到头打印链表</strong></h3>
+<pre><code class="language-java">public static ArrayList&lt;Integer&gt; arrayList = new ArrayList&lt;&gt;();
+public static void ff(ListNode node) {
+    if (node != null) {
+        ff(node.next);
+        arrayList.add(node.val);
+    }
+}
+public ArrayList&lt;Integer&gt; printListFromTailToHead(ListNode listNode) {
+    ff(listNode);
+    return arrayList;
+}
+</code></pre>
+<h3 id="jz7-重建二叉树"><strong>JZ7</strong> <strong>重建二叉树</strong></h3>
+<p>给定节点数为 n 的二叉树的前序遍历和中序遍历结果，请重建出该二叉树并返回它的头结点。</p>
+<p>例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建出如下图所示。</p>
+<figure data-type="image" tabindex="1"><img src="https://uploadfiles.nowcoder.com/images/20210717/557336_1626504921458/776B0E5E0FAD11A6F15004B29DA5E628" alt="" loading="lazy"></figure>
+<pre><code class="language-java">public TreeNode reConstructBinaryTree(int [] pre, int [] vin) {
+    int n = pre.length;
+    int m = vin.length;
+    //每个遍历都不能为0
+    if (n == 0 || m == 0)
+        return null;
+    //构建根节点
+    TreeNode root = new TreeNode(pre[0]);
+    for (int i = 0; i &lt; vin.length; i++) {
+        //找到中序遍历中的前序第一个元素
+        if (pre[0] == vin[i]) {
+            //构建左子树
+            root.left = reConstructBinaryTree(
+                Arrays.copyOfRange(pre,1,i+1),
+                Arrays.copyOfRange(vin,0,i));
+            //构建右子树
+            root.right = reConstructBinaryTree(
+                Arrays.copyOfRange(pre,i+1,pre.length),
+                Arrays.copyOfRange(vin,i+1,vin.length));
+            break;
+        }
+    } return root;
+}
+</code></pre>
+<h3 id="jz8-二叉树的下一个结点"><strong>JZ8</strong> <strong>二叉树的下一个结点</strong></h3>
+<p>给定一个二叉树其中的一个结点，请找出中序遍历顺序的下一个结点并且返回。注意，树中的结点不仅包含左右子结点，同时包含指向父结点的next指针。</p>
+<pre><code class="language-java">// 获取根节点，记录中序遍历结果，遍历比对，返回下一节点
+private ArrayList&lt;TreeLinkNode&gt; list = new ArrayList&lt;&gt;();
+
+public TreeLinkNode GetNext(TreeLinkNode pNode) {
+    TreeLinkNode node = pNode;
+    while (node.next!=null) node=node.next;
+    f(node);
+    for (int i=0;i&lt;list.size()-1;i++)
+        if (list.get(i)==pNode)
+            return list.get(i+1);
+    return null;
+}
+
+public void f(TreeLinkNode node) {
+    if (node==null) return;
+    f(node.left);
+    list.add(node);
+    f(node.right);
+}
+</code></pre>
+<h3 id="jz9-用两个栈实现队列"><strong>JZ9 用两个栈实现队列</strong></h3>
+<pre><code class="language-java">Stack&lt;Integer&gt; stack1 = new Stack&lt;Integer&gt;();
+Stack&lt;Integer&gt; stack2 = new Stack&lt;Integer&gt;();
+
+public void push(int node) {
+    stack1.push(node);
+}
+
+public int pop() {
+    if (stack2.isEmpty()){
+        while (!stack1.isEmpty()){
+            stack2.push(stack1.pop());
+        }
+    }
+    return stack2.pop();
+}
+</code></pre>
+<h3 id="jz10-斐波那契数列"><strong>JZ10 斐波那契数列</strong></h3>
+<pre><code class="language-java">public int Fibonacci(int n) {
+    int i = 1, j = 1, k;
+    while (--n != 0) {
+        k = j;
+        j = i + j;
+        i = k;
+    }
+    return i;
+}
+</code></pre>
+<p><em><strong>Reference：</strong></em> <a href="https://blog.nowcoder.net/n/77da51d38c8a433a944911e61b60f7e8">题解 #斐波那契数列#</a></p>
+<h3 id="jz11-旋转数组的最小数字"><strong>JZ11 旋转数组的最小数字</strong></h3>
+<pre><code class="language-java">// 二分法
+public int minNumberInRotateArray(int[] nums) {
+    int i = 0, j = nums.length - 1, k;
+    while (i &lt; j) {
+        k = i + (j - i) / 2;
+        // 旋转点在左排序数组
+        if (nums[k] &lt; nums[j])
+            j = k;
+            // 旋转点在右排序数组
+        else if (nums[k] &gt; nums[j])
+            i = k + 1;
+        else // nums[k]==nums[j]
+            j -= 1;
+    }
+    return nums[i];
+}
+</code></pre>
+<h3 id="jz12-矩阵中的路径"><strong>JZ12</strong> <strong>矩阵中的路径</strong></h3>
+<p>请设计一个函数，用来判断在一个n乘m的矩阵中是否存在一条包含某长度为len的字符串所有字符的路径。路径可以从矩阵中的任意一个格子开始，每一步可以在矩阵中向左，向右，向上，向下移动一个格子。如果一条路径经过了矩阵中的某一个格子，则该路径不能再进入该格子。</p>
+<pre><code class="language-java">public char[][] natrix;
+
+public boolean dfs(int i, int j, boolean[][] visited, String word) {
+    if (i &gt; natrix.length - 1 || i &lt; 0 || j &lt; 0 || j &gt; natrix[0].length - 1 ||
+            visited[i][j] || natrix[i][j] != word.charAt(0)) return false;
+    visited[i][j] = true;
+    if (word.length() == 1) return true;
+    word = word.substring(1);
+    boolean res = dfs(i + 1, j, visited, word)
+            ||dfs(i - 1, j, visited, word)
+            ||dfs(i, j + 1, visited, word)
+            ||dfs(i, j - 1, visited, word);
+    visited[i][j] = false;
+    return res;
+}
+
+public boolean hasPath(char[][] matrix, String word) {
+    natrix = matrix;
+    boolean[][] visited = new boolean[20][20];
+    for (int i = 0; i &lt; matrix.length; i++) {
+        for (int j = 0; j &lt; matrix[0].length; j++) {
+            if (dfs(i, j, visited, word))
+                return true;
+        }
+    } return false;
+}
+</code></pre>
+<h3 id="jz14-剪绳子"><strong>JZ14</strong> <strong>剪绳子</strong></h3>
+<p>给你一根长度为 n 的绳子，请把绳子剪成整数长的 m 段（ m 、 n 都是整数， n &gt; 1 并且 m &gt; 1 ， m &lt;= n ），每段绳子的长度记为 k[1],...,k[m] 。请问 k[1]<em>k[2]</em>...*k[m] 可能的最大乘积是多少？</p>
+<pre><code class="language-java">public int cutRope(int n) {
+    if (n &lt;= 3)
+        return n - 1;
+    int res = 1;
+    while (n &gt; 4) {
+        res *= 3;
+        n -= 3;
+    } return res * n;
+}
+</code></pre>
+<p><em><strong>Reference：</strong></em></p>
+<p>【1】<a href="https://zhuanlan.zhihu.com/p/108832910">证明，大数字都可以被拆分为多个2与3的和，以获取最大的乘积。</a></p>
+<p>【2】<a href="https://blog.nowcoder.net/n/60e15864ee1a4de3ac60989a5010505e">为什么是拆分成 2 和 3 ?</a></p>
+<h3 id="jz16-数值的整数次方"><strong>JZ16</strong> <strong>数值的整数次方</strong></h3>
+<p>实现函数 double Power(double base, int exponent)，求base的exponent次方。</p>
+<p>注意：</p>
+<p>1.保证base和exponent不同时为0。</p>
+<p>2.不得使用库函数，同时不需要考虑大数问题</p>
+<p>3.有特殊判题，不用考虑小数点后面0的位数。</p>
+<pre><code class="language-java">// 直接计算
+public double Power(double base, int exponent) {
+    double rs = 1;
+    if (exponent &lt; 0) {
+        exponent = -exponent;
+        base = 1 / base;
+    }
+    while (exponent-- != 0) {
+        rs *= base;
+    } return rs;
+}
+// 快速幂
+public double Power(double base, int exponent) {
+    double rs = 1;
+    if (exponent &lt; 0) {
+        exponent = -exponent;
+        base = 1 / base;
+    }
+    while (exponent != 0) {
+        if ((exponent &amp; 1) == 1)
+            rs *= base;
+        base *= base;
+        exponent &gt;&gt;= 1;
+    } return rs;
+}
+</code></pre>
+<h3 id="jz18-删除链表的节点"><strong>JZ18 删除链表的节点</strong></h3>
+<pre><code class="language-java">public ListNode deleteNode(ListNode head, int val) {
+    ListNode node = head;
+    // 链表长度&lt;=1
+    if (head.next == null) return null;
+    // val在头节点
+    if (head.val == val) return head.next;
+    while (node.next != null) {
+        // val在中间节点
+        if (node.next.val==val) {
+            node.next=node.next.next;
+            return head;
+        }
+        node = node.next;
+    } return null;
+}
+</code></pre>
+<h3 id="jz21-调整数组顺序使奇数位于偶数前面一"><strong>JZ21</strong> <strong>调整数组顺序使奇数位于偶数前面(一)</strong></h3>
+<p>输入一个长度为 n 整数数组，实现一个函数来调整该数组中数字的顺序，使得所有的奇数位于数组的前面部分，所有的偶数位于数组的后面部分，并保证奇数和奇数，偶数和偶数之间的相对位置不变。</p>
+<pre><code class="language-java">public int[] reOrderArray (int[] array) {
+    int n = array.length;
+    int[] res = new int[n];
+    int odd = 0; 
+    for(int i = 0; i &lt; n; i++){ 
+        if(array[i] % 2 == 1)
+            odd++;
+    }
+    int x = 0, y = odd; 
+    for(int i = 0; i &lt; n; i++){
+        if(array[i] % 2 == 1){ 
+            res[x] = array[i];
+            x++;
+        }else{ 
+            res[y] = array[i];
+            y++;
+        }
+    } return res;
+}
+</code></pre>
+<h3 id="jz22-链表中倒数最后k个结点"><strong>JZ22 链表中倒数最后k个结点</strong></h3>
+<pre><code class="language-java">// 无脑方法
+public ListNode FindKthToTail(ListNode pHead, int k) {
+    if (pHead == null) return pHead;
+    ArrayList&lt;ListNode&gt; listNodes = new ArrayList&lt;&gt;();
+    while (pHead.next != null) {
+        listNodes.add(pHead);
+        pHead = pHead.next;
+    }
+    int index = listNodes.size() - k + 1;
+    if (index&lt;0||k==0)return null;
+    return listNodes.get(listNodes.size() - k + 1);
+}
+
+// 双指针大法
+public ListNode FindKthToTail(ListNode pHead, int k) {
+    ListNode p1 = pHead;
+    ListNode p2 = pHead;
+    while (k-- &gt; 0) {
+        if (p1 != null) p1 = p1.next;
+        // k值过大
+        else return p1;
+    }
+    while (p1!=null){
+        p1=p1.next;
+        p2=p2.next;
+    }
+    return p2;
+}
+</code></pre>
+<h3 id="jz23-链表中环的入口结点"><strong>JZ23</strong> <strong>链表中环的入口结点</strong></h3>
+<p>给一个长度为n链表，若其包含环，请找出该链表的环的入口结点，否则，返回null。</p>
+<pre><code class="language-java">// HashSet
+public ListNode EntryNodeOfLoop(ListNode pHead) {
+    HashSet&lt;ListNode&gt; list = new HashSet&lt;&gt;();
+    while (pHead != null) {
+        if (!list.add(pHead))
+            return pHead;
+        pHead= pHead.next;
+    } return null;
+}
+// 双指针 快慢指针 
+</code></pre>
+<h3 id="jz24-反转链表"><strong>JZ24</strong> <strong>反转链表</strong></h3>
+<pre><code class="language-java">public ListNode ReverseList(ListNode head) {
+    // write code here
+    if (head == null) return null;
+    ListNode pre = null, cur = head, next = head.next;
+    while (cur!=null) {
+        next = cur.next;
+        cur.next = pre;
+        pre = cur;
+        cur = next;
+    }
+    return pre;
+}
+</code></pre>
+<h3 id="jz25-合并两个排序的链表"><strong>JZ25</strong> <strong>合并两个排序的链表</strong></h3>
+<pre><code class="language-java">// 双指针比较头节点
+public ListNode Merge(ListNode pHead1, ListNode pHead2) {
+    ListNode head = new ListNode(0);
+    ListNode temo = head;
+    if (pHead1 == null) return pHead2;
+    if (pHead2 == null) return pHead1;
+    while (pHead1 != null &amp;&amp; pHead2 != null) {
+        if (pHead1.val &lt;= pHead2.val) {
+            temo.next = pHead1;
+            pHead1 = pHead1.next;
+        } else {
+            temo.next = pHead2;
+            pHead2 = pHead2.next;
+        }
+        temo = temo.next;
+    }
+    if (pHead1 != null)
+        temo.next = pHead1;
+    else
+        temo.next = pHead2;
+    return head.next;
+}
+</code></pre>
+<h3 id="jz26-树的子结构"><strong>JZ26</strong> <strong>树的子结构</strong></h3>
+<pre><code class="language-java">public boolean f(TreeNode root1,TreeNode root2){
+    if (root2==null) return true;
+    if (root1==null) return false;
+    if (root1.val==root2.val)
+        return f(root1.left,root2.left) &amp;&amp; 
+               f(root1.right, root2.right);
+    return false;
+}
+
+public boolean HasSubtree(TreeNode root1,TreeNode root2) {
+    if(root1==null||root2==null) return false;
+    ArrayDeque&lt;TreeNode&gt; nodes = new ArrayDeque&lt;&gt;();
+    nodes.offer(root1);
+    while (!nodes.isEmpty()){
+        TreeNode poll = nodes.poll();
+        if (poll.left!=null) nodes.offer(poll.left);
+        if (poll.right!=null) nodes.offer(poll.right);
+        if (poll.val==root2.val)
+            if (f(poll, root2))
+                return true;
+    } return false;
+}
+</code></pre>
+<h3 id="jz27-二叉树的镜像"><strong>JZ27</strong> <strong>二叉树的镜像</strong></h3>
+<pre><code class="language-java">// 递归
+public TreeNode Mirror (TreeNode pRoot) {
+    if (pRoot == null) return pRoot;
+    TreeNode left = Mirror(pRoot.left);
+    TreeNode right = Mirror(pRoot.right);
+    pRoot.left = right;
+    pRoot.right = left;
+    return pRoot;
+}
+</code></pre>
+<h3 id="jz28-对称的二叉树"><strong>JZ28</strong> <strong>对称的二叉树</strong></h3>
+<pre><code class="language-java">// 递归对比
+boolean recursion(TreeNode left, TreeNode right) {
+    // 两个都为空
+    if (left == null &amp;&amp; right == null)
+        return true;
+    // 只有一个为空或者节点值不同
+    if (left == null || right == null || left.val != right.val)
+        return false;
+    // 递归比较
+    return recursion(left.left, right.right) &amp;&amp; recursion(left.right, right.left);
+}
+
+boolean isSymmetrical(TreeNode pRoot) {
+    return recursion(pRoot, pRoot);
+}
+</code></pre>
+<h3 id="jz29-顺时针打印矩阵"><strong>JZ29</strong> <strong>顺时针打印矩阵</strong></h3>
+<pre><code class="language-java">// 边界模拟
+public ArrayList&lt;Integer&gt; printMatrix(int [][] matrix) {
+    int up=0,down=matrix.length-1,left=0,right=matrix[0].length-1;
+    ArrayList&lt;Integer&gt; temo = new ArrayList&lt;Integer&gt;();
+    while(true){
+        int i;
+        // left -&gt; right
+        for(i=left;i&lt;=right;i++)
+            temo.add(matrix[up][i]);
+        if(++up&gt;down)break;
+        // up -&gt; down
+        for(i=up;i&lt;=down;i++)
+            temo.add(matrix[i][right]);
+        if(--right&lt;left)break;
+        // right -&gt; left
+        for(i=right;i&gt;=left;i--)
+            temo.add(matrix[down][i]);
+        if(--down&lt;up)break;
+        // down -&gt; up
+        for(i=down;i&gt;=up;i--)
+            temo.add(matrix[i][left]);
+        if(++left&gt;right)break;
+
+    }
+    return temo;
+}
+</code></pre>
+<h3 id="jz31-栈的压入-弹出序列"><strong>JZ31</strong> <strong>栈的压入、弹出序列</strong></h3>
+<pre><code class="language-java">public boolean IsPopOrder(int[] pushV, int[] popV) {
+    Stack&lt;Integer&gt; stack = new Stack&lt;&gt;();
+    int j=0;
+    for (int i : pushV) {
+        stack.push(i);
+        while (!stack.isEmpty()&amp;&amp;stack.peek()==popV[j]){
+            stack.pop();
+            if (++j==popV.length) return true;
+        }
+    } return false;
+}
+</code></pre>
+<h3 id="jz32-从上往下打印二叉树"><strong>JZ32</strong> <strong>从上往下打印二叉树</strong></h3>
+<pre><code class="language-java">// queue 二叉树层序遍历
+public ArrayList&lt;Integer&gt; PrintFromTopToBottom(TreeNode root) {
+    ArrayDeque&lt;TreeNode&gt; deque = new ArrayDeque&lt;&gt;();
+    if (root == null) return res;
+    deque.offer(root);
+    while (!deque.isEmpty()) {
+        TreeNode poll = deque.poll();
+        if (poll.left != null) deque.offer(poll.left);
+        if (poll.right != null) deque.offer(poll.right);
+        res.add(poll.val);
+    }
+    return res;
+}
+</code></pre>
+<h3 id="jz33-二叉搜索树的后序遍历序列"><strong>JZ33</strong> <strong>二叉搜索树的后序遍历序列</strong></h3>
+<p>输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历的结果。如果是则返回 true ,否则返回 false 。假设输入的数组的任意两个数字都互不相同。</p>
+<pre><code class="language-java">// 单调栈法
+public boolean VerifySquenceOfBST(int [] sequence) {
+    if(sequence.length==0) return false;
+    int root = Integer.MAX_VALUE;
+    Stack&lt;Integer&gt; stack = new Stack&lt;Integer&gt;();
+    for(int i=sequence.length-1;i&gt;-1;i--){
+        if(sequence[i]&gt;root) return false;
+        while(!stack.isEmpty()&amp;&amp;stack.peek()&gt;sequence[i])
+            root=stack.pop();
+        stack.add(sequence[i]);
+    } return true;
+}
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://uploadfiles.nowcoder.com/images/20220423/115230192_1650720965324/EFE7953D46B926AFF99D8C8A97A56E1E" alt="" loading="lazy"></figure>
+<h3 id="jz34-二叉树中和为某一值的路径二"><strong>JZ34</strong> <strong>二叉树中和为某一值的路径(二)</strong></h3>
+<p>输入一颗二叉树的根节点 root 和一个整数 target ，找出二叉树中结点值的和为 target 的所有路径。</p>
+<pre><code class="language-java">public ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+public ArrayList&lt;ArrayList&lt;Integer&gt;&gt; rs = new ArrayList&lt;&gt;();
+
+public void f(TreeNode root, int t) {
+    if (root == null) return ;
+    list.add(root.val);
+    if (root.left == null &amp;&amp; root.right == null &amp;&amp; t == root.val)
+        rs.add(new ArrayList&lt;&gt;(list));
+    t -= root.val;
+    f(root.left, t);
+    f(root.right, t);
+    list.remove(list.size()-1);
+}
+
+public ArrayList&lt;ArrayList&lt;Integer&gt;&gt; FindPath (TreeNode root, int target) {
+    f(root, target);
+    return rs;
+}
+</code></pre>
+<h3 id="jz36-二叉搜索树与双向链表"><strong>JZ36</strong> <strong>二叉搜索树与双向链表</strong></h3>
+<p>输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的双向链表。如下图所示</p>
+<figure data-type="image" tabindex="3"><img src="https://uploadfiles.nowcoder.com/images/20210605/557336_1622886924427/E1F1270919D292C9F48F51975FD07CE2" alt="" loading="lazy"></figure>
+<pre><code class="language-java">// 递归中序遍历
+public TreeNode pre=null;
+public TreeNode head=null; 
+
+public void f(TreeNode node) {
+    if(node==null) return;
+    f(node.left);
+    if(pre==null){
+        pre=node;
+        head=node;
+    } else {
+        pre.right=node;
+        node.left=pre;
+        pre=node;
+    }
+    f(node.right);
+}
+
+public TreeNode Convert(TreeNode pRootOfTree) {
+    f(pRootOfTree);
+    return head;
+}
+// 非递归中序遍历 栈实现
+</code></pre>
+<h3 id="jz39-出现次数超过一半的数字"><strong>JZ39</strong> <strong>出现次数超过一半的数字</strong></h3>
+<pre><code class="language-java">public int MoreThanHalfNum_Solution(int[] numbers) {
+    Arrays.sort(numbers);
+    return numbers[numbers.length/2];
+}
+// 投票算法
+</code></pre>
+<h3 id="jz42-连续子数组的最大和"><strong>JZ42</strong> <strong>连续子数组的最大和</strong></h3>
+<pre><code class="language-java">// 动态规划 
+// 以array[i]为结尾的「最大子数组和」为dp[i]
+// 并舍弃前面的以array[j]为结尾的和为负的子列
+public int FindGreatestSumOfSubArray (int[] array) {
+    int n = array.length;
+    int maxSum = array[0];
+    int currSum = array[0];
+    for (int i = 1; i &lt; n; i++) {
+        currSum = Math.max(array[i], currSum + array[i]);
+        maxSum = Math.max(maxSum, currSum);
+    }
+    return maxSum;
+}
+</code></pre>
+<h3 id="jz47-礼物的最大价值"><strong>JZ47</strong> <strong>礼物的最大价值</strong></h3>
+<p>在一个 <em>m</em>×<em>n</em> 的棋盘的每一格都放有一个礼物，每个礼物都有一定的价值（价值大于 0）。你可以从棋盘的左上角开始拿格子里的礼物，并每次向右或者向下移动一格、直到到达棋盘的右下角。给定一个棋盘及其上面的礼物的价值，请计算你最多能拿到多少价值的礼物？</p>
+<pre><code class="language-java">// 动态规划 (可以直接修改元素组)
+public int maxValue(int[][] grid) {
+    int m = grid.length;
+    int n = grid[0].length;
+
+    int[][] dp = new int[m][n];
+    dp[0][0] = grid[0][0];
+
+    // 初始化第一行和第一列
+    for (int i = 1; i &lt; m; i++)
+        dp[i][0] = dp[i - 1][0] + grid[i][0];
+    for (int j = 1; j &lt; n; j++)
+        dp[0][j] = dp[0][j - 1] + grid[0][j];
+
+    // 计算其余格子的最大礼物价值
+    for (int i = 1; i &lt; m; i++)
+        for (int j = 1; j &lt; n; j++)
+            dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]) + grid[i][j];
+    return dp[m - 1][n - 1];
+}
+// 递归
+</code></pre>
+<h3 id="jz50-第一个只出现一次的字符"><strong>JZ50</strong> <strong>第一个只出现一次的字符</strong></h3>
+<pre><code class="language-java">// HashMap
+public int FirstNotRepeatingChar(String str) {
+    Map&lt;Character, Integer&gt; map = new HashMap&lt;&gt;();
+    for (char c : str.toCharArray())
+        map.put(c, map.getOrDefault(c,0) + 1);
+    for (char c : str.toCharArray())
+        if (map.get(c) == 1)
+            return str.indexOf(c);
+    return -1;
+}
+// queue
+</code></pre>
+<h3 id="jz52-两个链表的第一个公共结点"><strong>JZ52</strong> <strong>两个链表的第一个公共结点</strong></h3>
+<pre><code class="language-java">// 双指针遍历
+public ListNode FindFirstCommonNode(ListNode pHead1, ListNode pHead2) {
+    ListNode n1=pHead1,n2=pHead2;
+    while (n1!=n2){
+        n1=n1==null?pHead2:n1.next;
+        n2=n2==null?pHead1:n2.next;
+    } return n1;
+}
+</code></pre>
+<img alt="36" src="https://uploadfiles.nowcoder.com/files/20210621/908787715_1624289962297/36.gif" style="zoom:80%;"   >
+<p><em><strong>Reference：</strong></em><a href="https://blog.nowcoder.net/n/35c57499566646e7b3ecb250d0b99907">解题思路</a></p>
+<h3 id="jz53-数字在升序数组中出现的次数"><strong>JZ53</strong> <strong>数字在升序数组中出现的次数</strong></h3>
+<pre><code class="language-java">// 二分法 查找左右边界
+private int binarySearch(int[] data, double k){
+    int left = 0,right = data.length - 1,mid;
+    while(left &lt;= right){
+        mid = right+(left-right) / 2;
+        if(data[mid] &lt; k)
+            left = mid + 1;
+        else if(data[mid] &gt; k)
+            right = mid - 1;
+    }
+    return left;
+}
+public int GetNumberOfK(int [] array , int k) {
+    return binarySearch(array, k + 0.5) - binarySearch(array, k - 0.5);
+}
+</code></pre>
+<h3 id="jz55-二叉树的深度"><strong>JZ55</strong> <strong>二叉树的深度</strong></h3>
+<pre><code class="language-java">// 递归
+public int TreeDepth(TreeNode root) {
+    if (root == null) return 0;
+    return Math.max(TreeDepth(root.left),TreeDepth(root.right))+1;
+}
+// queue 层序遍历
+</code></pre>
+<h3 id="jz56-数组中只出现一次的两个数字"><strong>JZ56</strong> <strong>数组中只出现一次的两个数字</strong></h3>
+<p>一个整型数组里除了两个数字只出现一次，其他的数字都出现了两次。请写程序找出这两个只出现一次的数字。</p>
+<p>数据范围：数组长度 2≤n≤1000，数组中每个数的大小 0&lt;v≤1000000</p>
+<pre><code class="language-java">// HashSet (初始想法)
+public int[] FindNumsAppearOnce(int[] nums) {
+    HashSet&lt;Integer&gt; set = new HashSet&lt;&gt;();
+    for (int i : nums)
+        if (!set.add(i)) set.remove(i);
+    Iterator&lt;Integer&gt; iterator = set.iterator();
+    Integer a = iterator.next();
+    Integer b = iterator.next();
+    return a&lt;b?new int[]{a,b}:new int[]{b,a};
+}
+
+// 异或运算 (推荐)
+public int[] FindNumsAppearOnce(int[] nums) {
+    // 计算数组中所有数字的异或结果
+    int xorResult = 0;
+    for (int num : nums)
+        xorResult ^= num;
+
+    // 找到异或结果中最低位的1
+    int mask = 1;
+    while ((xorResult &amp; mask) == 0)
+        mask &lt;&lt;= 1;
+
+    // 将数组分成两组，一组包含指定位为1的数字，另一组包含指定位为0的数字
+    int num1 = 0;
+    int num2 = 0;
+    for (int num : nums) {
+        if ((num &amp; mask) == 0)
+            num1 ^= num;
+        else
+            num2 ^= num;
+    }
+    return num1&lt;num2?new int[]{num1, num2}:new int[]{num2, num1};
+}
+</code></pre>
+<p><em><strong>Reference：</strong></em> <a href="https://blog.nowcoder.net/n/fb04d9ef08604fec9746e215ac2cfafe">题解 | #数组中只出现一次的两个数字#</a></p>
+<h3 id="jz57-和为s的两个数字"><strong>JZ57</strong> <strong>和为S的两个数字</strong></h3>
+<p>输入一个升序数组 array 和一个数字S，在数组中查找两个数，使得他们的和正好是S，如果有多对数字的和等于S，返回任意一组即可，如果无法找出这样的数字，返回一个空数组即可。</p>
+<pre><code class="language-java">// 双指针遍历
+public ArrayList&lt;Integer&gt; FindNumbersWithSum(int [] array,int sum) {
+    int i=0,j=array.length-1,rs;
+    ArrayList&lt;Integer&gt; arrayList = new ArrayList&lt;&gt;();
+    while (i&lt;j){
+        rs = array[i] + array[j];
+        if (rs==sum){
+            arrayList.add(array[i]);
+            arrayList.add(array[j]);
+            break;
+        }
+        else if (rs&gt;sum) j--;
+        else i++;
+    } return arrayList;
+}
+// HashMap (不推荐)
+</code></pre>
+<h3 id="jz61-扑克牌顺子"><strong>JZ61</strong> <strong>扑克牌顺子</strong></h3>
+<pre><code class="language-java">public boolean IsContinuous (int[] numbers) {
+    HashSet&lt;Integer&gt; cards = new HashSet&lt;&gt;();
+    for (int i:numbers) {
+        if (i == 0) continue;
+        if (!cards.add(i)) return false;
+    }
+    Iterator&lt;Integer&gt; iterator = cards.iterator();
+    int max = 0;
+    int min = iterator.next();
+    while (iterator.hasNext()) max = iterator.next();
+    return max-min&lt;5;
+}
+</code></pre>
+<h3 id="jz63-买卖股票的最好时机一"><strong>JZ63</strong> <strong>买卖股票的最好时机(一)</strong></h3>
+<pre><code class="language-java">public int maxProfit(int[] prices) {
+    if (prices == null) return 0;
+    int maxProfit=0,minPoint=Integer.MAX_VALUE;
+    for (int price : prices) {
+        minPoint = Math.min(minPoint, price);
+        maxProfit = Math.max(maxProfit, price - minPoint);
+    }
+    return maxProfit;
+}
+</code></pre>
+<h3 id="jz65-不用加减乘除做加法"><strong>JZ65</strong> <strong>不用加减乘除做加法</strong></h3>
+<pre><code class="language-java">// A+B = A^B + (A&amp;B) &lt;&lt; 1
+public int Add(int a, int b) {
+    // 当进位为0时，表示没有需要进位的位，此时计算结束
+    while (b != 0) {
+        // 计算进位，使用异或运算
+        int carry = a &amp; b;
+        // 计算无进位的和，使用异或运算
+        a = a ^ b;
+        // 将进位左移一位，作为下一次运算的进位
+        b = carry &lt;&lt; 1;
+    } return a;
+}
+</code></pre>
+<h3 id="jz66-构建乘积数组"><strong>JZ66</strong> <strong>构建乘积数组</strong></h3>
+<p>给定一个数组 A[0,1,...,n-1] ,请构建一个数组 B[0,1,...,n-1] ,其中 B 的元素 B[i]=A[0]<em>A[1]</em>...*A[i-1]<em>A[i+1]</em>...*A[n-1]（除 A[i] 以外的全部元素的的乘积）。程序中不能使用除法。（注意：规定 B[0] = A[1] * A[2] * ... * A[n-1]，B[n-1] = A[0] * A[1] * ... * A[n-2]）</p>
+<p>对于 A 长度为 1 的情况，B 无意义，故而无法构建，用例中不包括这种情况。</p>
+<pre><code class="language-java">
+</code></pre>
+<h3 id="jz68-二叉搜索树的最近公共祖先"><strong>JZ68</strong> <strong>二叉搜索树的最近公共祖先</strong></h3>
+<p>给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先。</p>
+<p>1.对于该题的最近的公共祖先定义:对于有根树T的两个节点p、q，最近公共祖先LCA(T,p,q)表示一个节点x，满足x是p和q的祖先且x的深度尽可能大。在这里，一个节点也可以是它自己的祖先.</p>
+<p>2.二叉搜索树是，若它的左子树不空，则左子树上所有节点的值均小于它的根节点的值； 若它的右子树不空，则右子树上所有节点的值均大于它的根节点的值</p>
+<p>3.所有节点的值都是唯一的。</p>
+<p>4.p、q 为不同节点且均存在于给定的二叉搜索树中。</p>
+<pre><code class="language-java">public int lowestCommonAncestor (TreeNode root, int p, int q) {
+    if (root==null) return -1;
+    if (root.val&gt;=q&amp;&amp;root.val&lt;=p||root.val&lt;=q&amp;&amp;root.val&gt;=p) return root.val;
+    if (p&gt;= root.val) return lowestCommonAncestor(root.right,p,q);
+    return lowestCommonAncestor(root.left,p,q);
+}
+</code></pre>
+<h3 id="jz69-跳台阶"><strong>JZ69</strong> <strong>跳台阶</strong></h3>
+<pre><code class="language-java">public int jumpFloor (int number) {
+	if(number==1||number==0) return 1;
+	return jumpFloor(number-1)+jumpFloor(number-2);
+}
+</code></pre>
+<h3 id="jz71-跳台阶扩展问题"><strong>JZ71</strong> <strong>跳台阶扩展问题</strong></h3>
+<pre><code class="language-java">public int jumpFloorII (int number) {
+    if(number==1||number==0)return 1;
+    return 2*jumpFloorII(number-1);
+}
+</code></pre>
+<h3 id="jz73-翻转单词序列"><strong>JZ73</strong> <strong>翻转单词序列</strong></h3>
+<pre><code class="language-java">public String ReverseSentence(String str) {
+    String[] s = str.split(&quot; &quot;);
+    StringBuilder ss = new StringBuilder();
+    for (int i=s.length-1;i&gt;-1;i--){
+        ss.append(s[i]).append(&quot; &quot;);
+    } return ss.toString().trim();
+}
+</code></pre>
+<h3 id="jz79-判断是不是平衡二叉树"><strong>JZ79</strong> <strong>判断是不是平衡二叉树</strong></h3>
+<p>输入一棵节点数为 n 二叉树，判断该二叉树是否是平衡二叉树。</p>
+<p>在这里，我们只需要考虑其平衡性，不需要考虑其是不是排序二叉树</p>
+<p><strong>平衡二叉树</strong>（Balanced Binary Tree），具有以下性质：它是一棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。</p>
+<pre><code class="language-java">public int depth(TreeNode node) {
+    if (node == null) return 0;
+    int left = depth(node.left);
+    if (left == -1) return -1;
+    int right = depth(node.right);
+    if (right == -1) return -1;
+    if (Math.abs(left - right) &gt; 1) return -1;
+    return Math.max(left, right) + 1;
+}
+
+public boolean IsBalanced_Solution(TreeNode pRoot) {
+    return depth(pRoot)!=-1;
+}
+</code></pre>
+<h3 id="jz81-调整数组顺序使奇数位于偶数前面二"><strong>JZ81</strong> <strong>调整数组顺序使奇数位于偶数前面(二)</strong></h3>
+<p>输入一个长度为 n 整数数组，数组里面可能含有相同的元素，实现一个函数来调整该数组中数字的顺序，使得所有的奇数位于数组的前面部分，所有的偶数位于数组的后面部分，对奇数和奇数，偶数和偶数之间的相对位置不做要求</p>
+<pre><code class="language-java">// 双指针
+public int[] reOrderArrayTwo (int[] array) {
+    int i = 0;
+    int j = array.length - 1; 
+    while(i &lt; j){ 
+        if(array[i] % 2 == 1 &amp;&amp; array[j] % 2 == 1) 
+            i++;
+        else if(array[i] % 2 == 1 &amp;&amp; array[j] % 2 == 0){
+            i++;
+            j--;
+        }
+        else if(array[i] % 2 == 0 &amp;&amp; array[j] % 2 == 1){
+            int temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+        else 
+            j--;
+    }
+    return array;
+}
+// ArrayDeque: offerFirst() offerLast()
+public int[] reOrderArrayTwo(int[] array) {
+    ArrayDeque&lt;Integer&gt; arrayList = new ArrayDeque&lt;&gt;();
+    for (int i : array) {
+        if (i % 2 == 0) {
+            arrayList.offerLast(i);
+        } else {
+            arrayList.offerFirst(i);
+        }
+    }
+    int[] res = new int[arrayList.size()];
+    int index = 0;
+    for (int i: arrayList)
+        res[index++]=i;
+    return res;
+}
+</code></pre>
+<h3 id="jz82-二叉树中和为某一值的路径一"><strong>JZ82</strong> <strong>二叉树中和为某一值的路径(一)</strong></h3>
+<p>给定一个二叉树root和一个值 sum ，判断是否有从根节点到叶子节点的节点值之和等于 sum 的路径。</p>
+<pre><code class="language-java">// 递归
+public boolean hasPathSum (TreeNode root, int sum) {
+    if (root==null) return false;
+    if (sum-root.val==0&amp;&amp;root.left==null&amp;&amp;root.right==null) return true;
+    return hasPathSum(root.left,sum-root.val)||hasPathSum(root.right,sum-root.val);
+}
+// 非递归 dfs Stack
+</code></pre>
+<h2 id="bm-牛客题霸-模板速刷-top101"><a href="https://www.nowcoder.com/ta/format-top101">BM 牛客题霸-模板速刷 TOP101</a></h2>
+<h3 id="bm53-缺失的第一个正整数"><strong>BM53</strong> <strong>缺失的第一个正整数</strong></h3>
+<p>给定一个无重复元素的整数数组 nums，请你找出其中没有出现的最小的正整数</p>
+<p>数据范围： −2<sup>31≤*nums*[*i*]≤2</sup>31−1, 0≤<em>len</em>(<em>nums</em>)≤5∗10^5</p>
+<pre><code class="language-java">public int minNumberDisappeared(int[] nums) {
+    HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();
+    for (int i : nums)
+        map.put(i, 1);
+    int rs = 1;
+    while(map.containsKey(rs))
+        rs++;
+    return rs;
+}
+</code></pre>
+<h3 id="bm78-打家劫舍一"><strong>BM78</strong> <strong>打家劫舍(一)</strong></h3>
+<pre><code class="language-java">public int rob (int[] nums) {
+    if(nums.length==1)return nums[0];
+    int[] dp = new int[nums.length];
+    dp[0]=nums[0];
+    dp[1]=Math.max(dp[0],nums[1]);
+    for (int i=2;i&lt;nums.length;i++){
+        dp[i]=Math.max(dp[i-1],dp[i-2]+nums[i]);
+    } return dp[nums.length-1];
+}
+</code></pre>
+<h3 id="bm79-打家劫舍二"><strong>BM79</strong> <strong>打家劫舍(二)</strong></h3>
+<p>你是一个经验丰富的小偷，准备偷沿湖的一排房间，每个房间都存有一定的现金，为了防止被发现，你不能偷相邻的两家，即，如果偷了第一家，就不能再偷第二家，如果偷了第二家，那么就不能偷第一家和第三家。沿湖的房间组成一个闭合的圆形，即第一个房间和最后一个房间视为相邻。</p>
+<p>给定一个长度为 n 的整数数组 nums ，数组中的元素表示每个房间存有的现金数额，请你计算在不被发现的前提下最多的偷窃金额。</p>
+<pre><code class="language-java">public int rob (int[] nums) {
+    if(nums.length==1)return nums[0];
+    int[] dp = new int[nums.length];
+    dp[0]=nums[0];
+    dp[1]=Math.max(dp[0],nums[1]);
+    for (int i=2;i&lt;nums.length;i++){
+        dp[i]=Math.max(dp[i-1],dp[i-2]+nums[i]);
+    } int max = dp[nums.length-2];
+    dp[0]=0;
+    dp[1]=nums[1];
+    for (int i=2;i&lt;nums.length;i++){
+        dp[i]=Math.max(dp[i-1],dp[i-2]+nums[i]);
+    } return Math.max(max,dp[nums.length-1]);
+}
+</code></pre>
+<h3 id="bm80-买卖股票的最好时机一"><strong>BM80</strong> <strong>买卖股票的最好时机(一)</strong></h3>
+<p>假设你有一个数组prices，长度为n，其中prices[i]是股票在第i天的价格，请根据这个价格数组，返回买卖股票能获得的最大收益</p>
+<p>1.你可以买入一次股票和卖出一次股票，并非每天都可以买入或卖出一次，总共只能买入和卖出一次，且买入必须在卖出的前面的某一天</p>
+<p>2.如果不能获取到任何利润，请返回0</p>
+<p>3.假设买入卖出均无手续费</p>
+<pre><code class="language-java">// 贪心
+public int maxProfit(int[] prices) {
+    if (prices == null) return 0;
+    int maxProfit=0,minPoint=Integer.MAX_VALUE;
+    for (int price : prices) {
+        minPoint = Math.min(mi nPoint, price);
+        maxProfit = Math.max(maxProfit, price - minPoint);
+    } return maxProfit;
+}
+// 动态规划
+public int maxProfit (int[] prices) {
+    int[][] dp = new int[prices.length][2];
+    dp[0][0] = 0;
+    dp[0][1] = -prices[0];
+    for(int i = 1; i &lt; prices.length; i++){
+        dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
+        dp[i][1] = Math.max(dp[i - 1][1], -prices[i]);
+    } return dp[prices.length-1][0];
+}
+</code></pre>
+<h3 id="bm81-买卖股票的最好时机二"><strong>BM81</strong> <strong>买卖股票的最好时机(二)</strong></h3>
+<p>假设你有一个数组prices，长度为n，其中prices[i]是某只股票在第i天的价格，请根据这个价格数组，返回买卖股票能获得的最大收益</p>
+<ol>
+<li>你可以多次买卖该只股票，但是再次购买前必须卖出之前的股票</li>
+<li>如果不能获取收益，请返回0</li>
+<li>假设买入卖出均无手续费</li>
+</ol>
+<pre><code class="language-java">// 动态规划
+public int maxProfit (int[] prices) {
+    int[][] dp = new int[prices.length][2];
+    dp[0][0] = 0;
+    dp[0][1] = -prices[0];
+    for(int i = 1; i &lt; prices.length; i++){
+        dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
+        dp[i][1] = Math.max(dp[i - 1][1], dp[i - 1][0] - prices[i]);
+    } return dp[prices.length-1][0];
+}
+</code></pre>
+<h3 id="bm82-买卖股票的最好时机三"><strong>BM82</strong> <strong>买卖股票的最好时机(三)</strong></h3>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://ncuxie.github.io/post/python script/">
+                <h3 class="post-title">
+                  python script
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+          
+            <div class="paper" data-aos="fade-in">
+              <div id="gitalk-container"></div>
+            </div>
+          
+
+          
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://ncuxie.github.io/images/avatar.png?v=1740900427981" class="no-responsive avatar">
+    <div class="text-muted">青春似水，流年</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/chun-zhao-tou-jian-li/">春招投简历</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/blog-zhe-teng-zhi-lu/">Blog 折腾之路</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/jing-shen-cuo-luan/">精神错乱</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/docker-连不上-mariadb-mysql？/">Docker 无法连接 MariaDB/MySQL ?</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/linux centos7/">linux centos7</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/疑难杂症/">疑难杂症，请入此间</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/java设计模式/">java设计模式</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/小镇刷题家 &amp;&amp; 漫无止境之路/">小镇刷题家 &amp;&amp; 漫无止境之路</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/python script/">python script</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/饥荒服务器的搭建及自动化更新的shell脚本/">饥荒服务器的搭建及自动化更新的shell脚本</a>
+            </li>
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://ncuxie.github.io/tag/Esx5lDlQ8/" class="badge success">
+          Docker
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/_idb9G-nZY/" class="badge success">
+          MariaDB
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/jOxNVRReNV/" class="badge secondary">
+          mysql
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/X9rkdiHHO/" class="badge secondary">
+          linux
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/LA8WkVxvSf/" class="badge warning">
+          centos
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/6UOdDA7Sqy/" class="badge success">
+          centos7
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/KAU6QC5Uft/" class="badge warning">
+          hexo
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/l4MZPMWGNQ/" class="badge success">
+          github
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/fy9hTbl0uX/" class="badge secondary">
+          github pages
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/9emwM8egjV/" class="badge secondary">
+          404
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/k5WPEKLa0b/" class="badge ">
+          OracleXE112_Win64
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/ykqRLMNe1c/" class="badge warning">
+          设计模式
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/PbewGjhyU2/" class="badge warning">
+          leetcode
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/j28d-M1J20/" class="badge ">
+          牛客
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/AplO39HvdF/" class="badge secondary">
+          python
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/qo2npxmC9N/" class="badge success">
+          pip
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/j515iZpVsx/" class="badge secondary">
+          package
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/xKQ6Dt4pqeN/" class="badge success">
+          dependency
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/GrBRaSduywG/" class="badge ">
+          dst
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/ksdioZ95OMy/" class="badge secondary">
+          shell
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/wBNzL5SgbZU/" class="badge ">
+          饥荒
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/vOea4rvHO8X/" class="badge secondary">
+          联机
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/_MSDSoExFDb/" class="badge success">
+          服务器
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/ZPPVd5qKwBu/" class="badge success">
+          自动
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/31zWxdTKLdX/" class="badge secondary">
+          script
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/ZYhgyO5rOag/" class="badge secondary">
+          脚本
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/MwQ1Lx7ukfw/" class="badge success">
+          life
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://ncuxie.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'Ov23limb5t4fikwFUs1b',
+        clientSecret: '9706007f15f41779fead307e1e8e3a2bdc8be2a4',
+        repo: 'ncuxie.github.io',
+        owner: 'ncuxie',
+        admin: ['ncuxie'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

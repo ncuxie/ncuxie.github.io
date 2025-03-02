@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>python script | Frio&#39;s Blog</title>
+<meta name="description" content="青春似水，流年">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://ncuxie.github.io/favicon.ico?v=1740900427981">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://ncuxie.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://ncuxie.github.io">Frio&#39;s Blog</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>python script</h1>
+            <p class="article-meta">
+              2023-07-13
+              
+                <a href="https://ncuxie.github.io/tag/AplO39HvdF/" class="badge success">
+                  python
+                </a>
+              
+                <a href="https://ncuxie.github.io/tag/qo2npxmC9N/" class="badge secondary">
+                  pip
+                </a>
+              
+                <a href="https://ncuxie.github.io/tag/j515iZpVsx/" class="badge success">
+                  package
+                </a>
+              
+                <a href="https://ncuxie.github.io/tag/xKQ6Dt4pqeN/" class="badge warning">
+                  dependency
+                </a>
+              
+            </p>
+            
+            <div class="post-content" v-pre>
+              <p>记录一些随便写的 python 的东西。</p>
+<!--more-->
+<h4 id="打包依赖">打包依赖</h4>
+<pre><code class="language-cmd">pip list --format=freeze &gt; requirements.txt
+</code></pre>
+<h4 id="小说-txt-文件分段">小说 .txt 文件分段</h4>
+<p>最近在看小说，在网络上下载了<code>.txt</code>文件到kindle上看，结果发现文字段落间没有空白行╮(╯_╰)╭，于是乎，只能自己动手了。</p>
+<pre><code class="language-py">def process():
+    with open(&quot;novel.txt&quot;, &quot;rt&quot;, encoding=&quot;utf8&quot;) as f:
+        lines = f.readlines()
+        # 由于原文中存在 \n 独自成一行，strip()过滤后仍会留下空的元素
+        new_lines = [line.strip() + &quot;\n\n&quot; for line in lines]
+        # 每两行文字间空一行
+        # new_lines = [line + &quot;\n&quot; for line in filter(lambda x: x.strip(), lines)]
+    with open(&quot;output.txt&quot;, &quot;wt&quot;, encoding=&quot;utf8&quot;) as f:
+        f.writelines(new_lines)
+process()
+</code></pre>
+<h4 id="漫画-图片纵向拼接">漫画 图片纵向拼接</h4>
+<p>最近在看漫画，网页端和手机端看着都不舒服，于是把漫画的<code>.jpg</code>文件爬取下来，再纵向拼接成一张图来看。</p>
+<pre><code class="language-py">TO BE WRITTEN...
+</code></pre>
+<h4 id="kindle-epub-文件分段">Kindle .epub 文件分段</h4>
+<p>最近又在看小说，这次是 <code>.epub</code> 文件，段与段之间还是没有空白行，看着很难受 (\╯﹏╰)—\，于是写个脚本处理一下。</p>
+<h5 id="epub-文件结构">.epub 文件结构</h5>
+<p>将 <code>.epub</code> 文件当压缩包打开，可以看到，文件目录如下：</p>
+<pre><code class="language-text">—— META-INF
+—— OEBPS
+   —— Images
+   —— Styles
+   —— Test &lt;-- 里面是想要修改的.html文件
+</code></pre>
+<p><code>.epub</code> 文件中文字内容是以 <code>.html</code> 的形式存在的（其实就是把一群 <code>.html</code> 页面打包了）</p>
+<h5 id="实现代码">实现代码</h5>
+<pre><code class="language-py">import os
+import zipfile
+import bs4
+
+
+def zip_epub():
+
+    # 设置EPUB文件名和文件路径
+    epub_file = &quot;src/New The Little Prince.epub&quot;
+    epub_folder = &quot;src/New The Little Prince&quot;
+
+    # 创建一个新的EPUB文件
+    with zipfile.ZipFile(epub_file, &quot;w&quot;) as new_epub:
+
+        # 遍历EPUB文件夹中的所有文件和文件夹，并添加到新的EPUB文件中
+        for folder_name, sub_folders, file_names in os.walk(epub_folder):
+
+            # 遍历文件夹中的所有文件，并添加到新的EPUB文件中
+            for file_name in file_names:
+                # 获取文件的完整路径
+                file_path = os.path.join(folder_name, file_name)
+
+                # 将HTML文件放置在OEBPS/Text/文件夹下
+                if file_name.endswith(&quot;.html&quot;):
+                    file_path_in_epub = os.path.join(&quot;OEBPS&quot;, &quot;Text&quot;, file_name.replace(&quot; &quot;, &quot;_&quot;).lower())
+                else:
+                    file_path_in_epub = os.path.relpath(file_path, epub_folder)
+
+                # 将文件添加到新的EPUB文件中
+                new_epub.write(file_path, file_path_in_epub)
+
+    print(&quot;EPUB文件已经生成完成！&quot;)
+
+
+def process():
+
+    # 打开epub文件
+    with zipfile.ZipFile('./src/The Little Prince.epub', 'r') as myzip:
+
+        # 获取文件列表
+        files = myzip.namelist()
+
+        # 遍历文件列表并提取html文件
+        for file in files:
+            if file.endswith(&quot;.html&quot;):
+
+                # 读取HTML文件内容
+                html_content = myzip.read(file)
+
+                # 解析HTML文件
+                soup = bs4.BeautifulSoup(html_content, 'html.parser')
+
+                # 获取所有的&lt;p&gt;标签
+                p_tags = soup.find_all('p')
+
+                # 在每两个&lt;p&gt;标签之间增加一个空白行
+                for i in range(1, len(p_tags)):
+                    p_tags[i - 1].insert_after(soup.new_tag('br'))
+
+                # 将修改后的HTML保存到新文件中
+                with open(f'src/New The Little Prince/{file}', 'w', encoding=&quot;utf-8&quot;) as new_html_file:
+                    new_html_file.write(soup.prettify())
+
+
+process()
+zip_epub()
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://ncuxie.github.io/post/饥荒服务器的搭建及自动化更新的shell脚本/">
+                <h3 class="post-title">
+                  饥荒服务器的搭建及自动化更新的shell脚本
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+          
+            <div class="paper" data-aos="fade-in">
+              <div id="gitalk-container"></div>
+            </div>
+          
+
+          
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://ncuxie.github.io/images/avatar.png?v=1740900427981" class="no-responsive avatar">
+    <div class="text-muted">青春似水，流年</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/chun-zhao-tou-jian-li/">春招投简历</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/blog-zhe-teng-zhi-lu/">Blog 折腾之路</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/jing-shen-cuo-luan/">精神错乱</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/docker-连不上-mariadb-mysql？/">Docker 无法连接 MariaDB/MySQL ?</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/linux centos7/">linux centos7</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/疑难杂症/">疑难杂症，请入此间</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/java设计模式/">java设计模式</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/小镇刷题家 &amp;&amp; 漫无止境之路/">小镇刷题家 &amp;&amp; 漫无止境之路</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/python script/">python script</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/饥荒服务器的搭建及自动化更新的shell脚本/">饥荒服务器的搭建及自动化更新的shell脚本</a>
+            </li>
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://ncuxie.github.io/tag/Esx5lDlQ8/" class="badge success">
+          Docker
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/_idb9G-nZY/" class="badge warning">
+          MariaDB
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/jOxNVRReNV/" class="badge secondary">
+          mysql
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/X9rkdiHHO/" class="badge success">
+          linux
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/LA8WkVxvSf/" class="badge warning">
+          centos
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/6UOdDA7Sqy/" class="badge ">
+          centos7
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/KAU6QC5Uft/" class="badge secondary">
+          hexo
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/l4MZPMWGNQ/" class="badge success">
+          github
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/fy9hTbl0uX/" class="badge ">
+          github pages
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/9emwM8egjV/" class="badge warning">
+          404
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/k5WPEKLa0b/" class="badge secondary">
+          OracleXE112_Win64
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/ykqRLMNe1c/" class="badge warning">
+          设计模式
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/PbewGjhyU2/" class="badge success">
+          leetcode
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/j28d-M1J20/" class="badge secondary">
+          牛客
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/AplO39HvdF/" class="badge success">
+          python
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/qo2npxmC9N/" class="badge ">
+          pip
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/j515iZpVsx/" class="badge ">
+          package
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/xKQ6Dt4pqeN/" class="badge warning">
+          dependency
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/GrBRaSduywG/" class="badge warning">
+          dst
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/ksdioZ95OMy/" class="badge success">
+          shell
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/wBNzL5SgbZU/" class="badge warning">
+          饥荒
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/vOea4rvHO8X/" class="badge ">
+          联机
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/_MSDSoExFDb/" class="badge warning">
+          服务器
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/ZPPVd5qKwBu/" class="badge secondary">
+          自动
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/31zWxdTKLdX/" class="badge secondary">
+          script
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/ZYhgyO5rOag/" class="badge secondary">
+          脚本
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/MwQ1Lx7ukfw/" class="badge warning">
+          life
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://ncuxie.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'Ov23limb5t4fikwFUs1b',
+        clientSecret: '9706007f15f41779fead307e1e8e3a2bdc8be2a4',
+        repo: 'ncuxie.github.io',
+        owner: 'ncuxie',
+        admin: ['ncuxie'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

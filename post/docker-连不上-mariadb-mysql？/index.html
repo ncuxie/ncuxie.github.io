@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Docker 无法连接 MariaDB/MySQL ? | Frio&#39;s Blog</title>
+<meta name="description" content="青春似水，流年">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://ncuxie.github.io/favicon.ico?v=1740900427981">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://ncuxie.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://ncuxie.github.io">Frio&#39;s Blog</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>Docker 无法连接 MariaDB/MySQL ?</h1>
+            <p class="article-meta">
+              2024-05-31
+              
+                <a href="https://ncuxie.github.io/tag/Esx5lDlQ8/" class="badge success">
+                  Docker
+                </a>
+              
+                <a href="https://ncuxie.github.io/tag/_idb9G-nZY/" class="badge secondary">
+                  MariaDB
+                </a>
+              
+                <a href="https://ncuxie.github.io/tag/jOxNVRReNV/" class="badge ">
+                  mysql
+                </a>
+              
+            </p>
+            
+            <div class="post-content" v-pre>
+              <p>环境：Linux version 5.15.0-92-generic，Docker version 26.1.3，mariadb from 11.3.2-MariaDB</p>
+<ol>
+<li>
+<p>首先是 MariaDB 在 <a href="https://hub.docker.com/_/mariadb">Docker 官网</a> 给出的，运行一个 MariaDB 的最简化配置方案。</p>
+<pre><code class="language-bash">docker run --detach --name some-mariadb --env MARIADB_ROOT_PASSWORD=my-secret-pw mariadb:latest
+</code></pre>
+<p><code>--detach</code> 也就是 <code>-d</code> 后台运行，<code>--name</code> 顾名思义是容器的名字，<code>--env</code> 同理是环境配置，<code>MARIADB_ROOT_PASSWORD</code> 这里初始化了 <code>root</code> 用户的密码为 <code>my-secret-pw</code> ，最后 <code>mariadb:latest</code> 使用 MariaDB 的最新版本。</p>
+<p>我们在服务器上执行如下命令，尝试本地连接上 Docker 中的数据库，</p>
+<pre><code class="language-bash">mariadb -uroot -pmy-secret-pw
+</code></pre>
+<p><code>-u</code> 指定用户名，<code>-p</code> 指定用户的密码，<code>-P</code> 指定端口号。</p>
+<pre><code class="language-markdown">```bash
+\# mariadb -uroot -pmy-secret-pw
+</code></pre>
+<p>如果你本地没有下载过数据库核心的话，可能会提示你去下载 **-core，按照提示下载即可。然后就可以成功收获一条 <code>ERROR</code> (<s><em>恭喜</em></s>)，</p>
+<p><code>ERROR 2002 (HY000): Can't connect to local server through socket '/run/mysqld/mysqld.sock' (2)</code> ，这种方式就是通过 <code>本地 sock</code> 连接，我们本地根本就没安装 MariaDB，自然也就无法通过 sock 进行连接。</p>
+<p>再尝试指定端口进行连接，</p>
+<pre><code class="language-bash">mariadb -uroot -pmy-secret-pw -P3306
+</code></pre>
+<p><code>ERROR 2002 (HY000): Can't connect to server on 'localhost' (115)</code></p>
+<p>这是因为我们在创建容器的时候并没有进行端口映射 <code>-p [本机端口]:[容器端口(数据库的话也就是3306)]</code> ，连接数据库也就无从谈起了。</p>
+</li>
+<li>
+<p>于是我们删除之前的容器，加上端口重新创建容器，</p>
+<pre><code class="language-bash">docker stop some-mariadb &amp;&amp; docker rm some-mariadb
+</code></pre>
+<pre><code class="language-bash">docker run --detach --name some-mariadb --env MARIADB_ROOT_PASSWORD=my-secret-pw -p 3306:3306 mariadb:latest
+</code></pre>
+<p>尝试连接，</p>
+<pre><code class="language-bash">mariadb -uroot -pmy-secret-pw -P3306
+</code></pre>
+<pre><code>Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 3
+Server version: 11.3.2-MariaDB-1:11.3.2+maria~ubu2204 mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]&gt;
+</code></pre>
+<p>连接成功！</p>
+<p>然鹅，我们一般并不会用这样的容器。而是会选择 <code>-v</code> 进行数据卷映射。</p>
+</li>
+<li>
+<p>同样的，我们以 <a href="https://hub.docker.com/_/mariadb">官方文档</a> 为主，在 <code>Caveats</code> 中的 <code>Where to Store Data</code> 可以看到关于数据卷映射的相关内容，并且可以看到，官方是更推荐这种方式创建的。</p>
+</li>
+</ol>
+<p>于是，我们先 <code>stop</code> 并 <code>rm</code> 之前没有 <code>-v</code> 映射的 MariaDB 容器，</p>
+<pre><code class="language-BASH">docker stop some-mariadb &amp;&amp; docker rm some-mariadb
+</code></pre>
+<p>然后按照文档创建数据卷映射 <code>-v [local dir]:[container dir]</code> ，并添加上 <code>-p</code> 的端口映射。</p>
+<pre><code class="language-bash">docker run --name some-mariadb -v /my/own/datadir:/var/lib/mysql:Z -e MARIADB_ROOT_PASSWORD=my-secret-pw -p 3306:3306 -d mariadb:latest
+</code></pre>
+<p>尝试本地通过端口连接，</p>
+<pre><code class="language-bash">mariadb -uroot -pmy-secret-pw -P3306
+</code></pre>
+<pre><code>Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 3
+Server version: 11.3.2-MariaDB-1:11.3.2+maria~ubu2204 mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]&gt;
+</code></pre>
+<p>连接成功✌️！</p>
+<p>但是，我的连接并非这样一帆风顺。</p>
+<ol start="4">
+<li>
+<p>数据卷映射后无法连接，场景复现。</p>
+<ol>
+<li>
+<p>创建容器</p>
+<pre><code class="language-bash">docker run --name mariadb1 -v /my/own/datadir:/var/lib/mysql:Z -e MARIADB_ROOT_PASSWORD=my-secret-pw -p 3306:3306 -d mariadb:latest
+</code></pre>
+<pre><code class="language-bash">docker run --name mariadb2 -v /my/own/datadir:/var/lib/mysql:Z -e MARIADB_ROOT_PASSWORD=my-secret-pw -p 3307:3306 -d mariadb:latest
+</code></pre>
+</li>
+<li>
+<p>运行测试</p>
+<pre><code class="language-bash">mariadb -uroot -pmy-secret-pw -P3306
+</code></pre>
+<pre><code class="language-bash">mariadb -uroot -pmy-secret-pw -P3307
+</code></pre>
+<p>mariadb1 运行成功，mariadb2 报错，<code>ERROR 2002 (HY000): Can't connect to server on 'localhost' (115)</code></p>
+</li>
+<li>
+<p>停止 mariadb1 容器，再测试连接</p>
+<pre><code class="language-bash">docker stop mariadb1
+</code></pre>
+<pre><code class="language-bash">mariadb -uroot -pmy-secret-pw -P3307
+</code></pre>
+<p><code>ERROR 2002 (HY000): Can't connect to server on 'localhost' (115)</code> ，报错，连接失败。</p>
+</li>
+<li>
+<p>删除 mariadb1 容器，再测试连接</p>
+<pre><code class="language-bash">docker rm mariadb1
+</code></pre>
+<pre><code class="language-bash">mariadb -uroot -pmy-secret-pw -P3307
+</code></pre>
+<p><code>ERROR 2002 (HY000): Can't connect to server on 'localhost' (115)</code> ，报错相同，仍然失败。</p>
+</li>
+<li>
+<p>进入容器内部，测试 MariaDB 是否正常运行</p>
+<pre><code class="language-bash">docker exec -it mariadb2 bash
+</code></pre>
+<p><code>Error response from daemon: container b54a939866dd471a9efe1f8ec0009bffe8a4115f55c8dec685cc8a5afc638ad3 is not running</code> 进入失败，容器未运行。</p>
+<p>[如果你的容器没有问题，可以跳到 <code>8.问题遗留</code> 看看]</p>
+</li>
+<li>
+<p>重启容器</p>
+<pre><code class="language-bash">docker start mariadb2
+</code></pre>
+<pre><code class="language-bash">mariadb -uroot -pmy-secret-pw -P3307
+</code></pre>
+<p>连接成功！😭</p>
+</li>
+<li>
+<p>结论</p>
+<p><code>-v</code> 映射了相同目录，导致容器无法正常启动。</p>
+</li>
+<li>
+<p>问题遗留</p>
+<p>当时我记得容器是正常运行的，也可以进入到容器内正常连接到数据库。</p>
+<p>但是，这种情况并没能复现出来？</p>
+<p>我当时用的是 MySQL 和 MariaDB 两种数据库并且都进行了映射。</p>
+<p>应该仍然是 <code>-v</code> 映射的问题，只是懒得再复现了。</p>
+<p>[当时删除了 <code>-v</code> 本地目录下的所有文件，并 restart 一下就 👌 了]</p>
+</li>
+</ol>
+</li>
+<li>
+<p>后日谈</p>
+<p>虽然是个简单的问题，但是当时并没有这样条理清晰的进行测试复现工作，从而浪费几个小时，并且被烦躁的情绪所困扰。</p>
+</li>
+</ol>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://ncuxie.github.io/post/linux centos7/">
+                <h3 class="post-title">
+                  linux centos7
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+          
+            <div class="paper" data-aos="fade-in">
+              <div id="gitalk-container"></div>
+            </div>
+          
+
+          
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://ncuxie.github.io/images/avatar.png?v=1740900427981" class="no-responsive avatar">
+    <div class="text-muted">青春似水，流年</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/chun-zhao-tou-jian-li/">春招投简历</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/blog-zhe-teng-zhi-lu/">Blog 折腾之路</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/jing-shen-cuo-luan/">精神错乱</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/docker-连不上-mariadb-mysql？/">Docker 无法连接 MariaDB/MySQL ?</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/linux centos7/">linux centos7</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/疑难杂症/">疑难杂症，请入此间</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/java设计模式/">java设计模式</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/小镇刷题家 &amp;&amp; 漫无止境之路/">小镇刷题家 &amp;&amp; 漫无止境之路</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/python script/">python script</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://ncuxie.github.io/post/饥荒服务器的搭建及自动化更新的shell脚本/">饥荒服务器的搭建及自动化更新的shell脚本</a>
+            </li>
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://ncuxie.github.io/tag/Esx5lDlQ8/" class="badge success">
+          Docker
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/_idb9G-nZY/" class="badge success">
+          MariaDB
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/jOxNVRReNV/" class="badge warning">
+          mysql
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/X9rkdiHHO/" class="badge ">
+          linux
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/LA8WkVxvSf/" class="badge success">
+          centos
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/6UOdDA7Sqy/" class="badge ">
+          centos7
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/KAU6QC5Uft/" class="badge ">
+          hexo
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/l4MZPMWGNQ/" class="badge success">
+          github
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/fy9hTbl0uX/" class="badge success">
+          github pages
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/9emwM8egjV/" class="badge warning">
+          404
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/k5WPEKLa0b/" class="badge success">
+          OracleXE112_Win64
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/ykqRLMNe1c/" class="badge secondary">
+          设计模式
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/PbewGjhyU2/" class="badge warning">
+          leetcode
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/j28d-M1J20/" class="badge success">
+          牛客
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/AplO39HvdF/" class="badge secondary">
+          python
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/qo2npxmC9N/" class="badge warning">
+          pip
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/j515iZpVsx/" class="badge secondary">
+          package
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/xKQ6Dt4pqeN/" class="badge ">
+          dependency
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/GrBRaSduywG/" class="badge success">
+          dst
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/ksdioZ95OMy/" class="badge warning">
+          shell
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/wBNzL5SgbZU/" class="badge secondary">
+          饥荒
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/vOea4rvHO8X/" class="badge secondary">
+          联机
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/_MSDSoExFDb/" class="badge warning">
+          服务器
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/ZPPVd5qKwBu/" class="badge success">
+          自动
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/31zWxdTKLdX/" class="badge ">
+          script
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/ZYhgyO5rOag/" class="badge secondary">
+          脚本
+        </a>
+      
+        <a href="https://ncuxie.github.io/tag/MwQ1Lx7ukfw/" class="badge ">
+          life
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://ncuxie.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'Ov23limb5t4fikwFUs1b',
+        clientSecret: '9706007f15f41779fead307e1e8e3a2bdc8be2a4',
+        repo: 'ncuxie.github.io',
+        owner: 'ncuxie',
+        admin: ['ncuxie'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
